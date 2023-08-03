@@ -11,8 +11,8 @@ import { Sequelize } from "sequelize";
 
 const sequelize = new Sequelize(
   "alquiler_bienes_muebles",
-  "2azvcsnjaf8isimin4bf",
-  "pscale_pw_UGo68bXj02qBkxyOeeE1mE8I1HnucsomooTcKPqwTL",
+  "if0cfxss3d4itnb8wxm8",
+  "pscale_pw_MngXLmOBzUhjoNyPf8pjyvWJEO4fMFveDFM6bjpVEhW",
   {
     host: "aws.connect.psdb.cloud",
     dialect: "mysql",
