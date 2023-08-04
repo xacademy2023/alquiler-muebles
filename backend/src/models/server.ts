@@ -32,6 +32,18 @@ class Server {
   midlewares() {
     this.app.use(cors({ origin: "https://alquiler-muebles.vercel.app" }));
     this.app.use(express.json());
+    this.app.use((req, res, next) => {
+      res.setHeader(
+        "Access-Control-Allow-Origin",
+        "https://alquiler-muebles.vercel.app"
+      );
+      res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+      res.setHeader(
+        "Access-Control-Allow-Headers",
+        "Content-Type, Authorization"
+      );
+      next();
+    });
   }
 
   async dbConnect() {
