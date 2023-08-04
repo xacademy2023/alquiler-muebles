@@ -37,7 +37,7 @@ class Server {
         this.app.use("/users", userRoutes_1.default);
     }
     midlewares() {
-        this.app.use((0, cors_1.default)({ origin: "https://alquiler-muebles.vercel.app/*" }));
+        this.app.use((0, cors_1.default)({ origin: "https://alquiler-muebles.vercel.app" }));
         this.app.use(express_1.default.json());
     }
     dbConnect() {
