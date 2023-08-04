@@ -30,7 +30,7 @@ class Server {
   }
 
   midlewares() {
-    this.app.use(cors());
+    this.app.use(cors({ origin: "https://alquiler-muebles.vercel.app" }));
     this.app.use(express.json());
   }
 
