@@ -10,11 +10,11 @@ import { Sequelize } from "sequelize";
 //Conexion para Produccion
 
 const sequelize = new Sequelize(
-  "alquiler_bienes_muebles",
-  "if0cfxss3d4itnb8wxm8",
-  "pscale_pw_MngXLmOBzUhjoNyPf8pjyvWJEO4fMFveDFM6bjpVEhW",
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
   {
-    host: "aws.connect.psdb.cloud",
+    host: process.env.DB_HOST,
     dialect: "mysql",
     dialectOptions: {
       ssl: {

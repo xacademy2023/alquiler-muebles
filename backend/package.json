@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node dist/index.js",
     "build": "tsc",
     "predeploy": "npm run build",
     "deploy": "vercel --prod",
