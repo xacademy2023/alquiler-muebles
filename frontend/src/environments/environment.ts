@@ -1,5 +1,4 @@
 export const environment = {
-    production: false,
-    endpoint: 'http://localhost:8080/'
-  };
-  
+  production: false,
+  endpoint: 'https://alquiler-muebles-back-v2.vercel.app/',
+};
