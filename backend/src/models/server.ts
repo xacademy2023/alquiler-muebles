@@ -12,10 +12,10 @@ class Server {
   constructor() {
     this.app = express();
     this.port = process.env.PORT || "3000";
+    this.listen();
     this.midlewares();
     this.routes();
     this.dbConnect();
-    this.listen();
   }
 
   listen() {
@@ -30,20 +30,8 @@ class Server {
   }
 
   midlewares() {
-    this.app.use(cors({ origin: "https://alquiler-muebles.vercel.app" }));
+    this.app.use(cors({ origin: "http://localhost:4200" }));
     this.app.use(express.json());
-    this.app.use((req, res, next) => {
-      res.setHeader(
-        "Access-Control-Allow-Origin",
-        "https://alquiler-muebles.vercel.app"
-      );
-      res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-      res.setHeader(
-        "Access-Control-Allow-Headers",
-        "Content-Type, Authorization"
-      );
-      next();
-    });
   }
 
   async dbConnect() {
