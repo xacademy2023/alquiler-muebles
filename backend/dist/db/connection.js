@@ -8,7 +8,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const mysql2_1 = __importDefault(require("mysql2"));
 dotenv_1.default.config();
 //Conexion local
-const sequelize = new sequelize_1.Sequelize("grupo10", "root", "", {
+const sequelize = new sequelize_1.Sequelize("grupo10", "root", "root", {
     host: "localhost",
     dialect: "mysql",
     dialectModule: mysql2_1.default,
