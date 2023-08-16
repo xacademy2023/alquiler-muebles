@@ -5,7 +5,7 @@ import mysql2 from "mysql2";
 dotenv.config();
 //Conexion local
 
-const sequelize = new Sequelize("grupo10", "root", "", {
+const sequelize = new Sequelize("grupo10", "root", "root", {
   host: "localhost",
   dialect: "mysql",
   dialectModule: mysql2,

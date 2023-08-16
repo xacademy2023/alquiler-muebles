@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Modulos
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 
 
@@ -18,6 +18,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
+import { CrudComponent } from './components/crud/crud.component';
+import { ProgressBarComponent } from './shared/progress-bar/progress-bar.component';
+import { HomeComponent } from './components/home/home.component';
+import { DetailComponent } from './components/detail/detail.component';
 
 
 @NgModule({
@@ -27,7 +31,11 @@ import { AddTokenInterceptor } from './utils/add-token.interceptor';
     SignInComponent,
     DashboardComponent,
     NavbarComponent,
-    SpinnerComponent,    
+    SpinnerComponent,
+    CrudComponent,
+    ProgressBarComponent,
+    HomeComponent,
+    DetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +43,7 @@ import { AddTokenInterceptor } from './utils/add-token.interceptor';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       positionClass: 'toast-bottom-right',
