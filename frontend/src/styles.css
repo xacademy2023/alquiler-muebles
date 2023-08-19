@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 html,
 body {
-    height: 100%;
+    background-image: url(https://st3.depositphotos.com/13349494/i/600/depositphotos_164128612-stock-photo-wooden-tableware.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .wrapper {

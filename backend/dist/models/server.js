@@ -13,15 +13,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const productRoutes_1 = __importDefault(require("../routes/productRoutes"));
 const userRoutes_1 = __importDefault(require("../routes/userRoutes"));
-const cors_1 = __importDefault(require("cors"));
 const product_1 = require("./product");
 const user_1 = require("./user");
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
-        this.port = process.env.PORT || "8080";
+        this.port = process.env.PORT || '8080';
         this.listen();
         this.midlewares();
         this.routes();
@@ -33,12 +33,12 @@ class Server {
         });
     }
     routes() {
-        this.app.use("/products", productRoutes_1.default);
-        this.app.use("/users", userRoutes_1.default);
+        this.app.use('/products', productRoutes_1.default);
+        this.app.use('/users', userRoutes_1.default);
     }
     midlewares() {
-        this.app.use((0, cors_1.default)({ origin: "http://localhost:4200" }));
         this.app.use(express_1.default.json());
+        this.app.use((0, cors_1.default)());
     }
     dbConnect() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -47,7 +47,7 @@ class Server {
                 yield user_1.User.sync();
             }
             catch (error) {
-                console.error("Unable to connect to the database:", error);
+                console.error('Unable to connect to the database:', error);
             }
         });
     }

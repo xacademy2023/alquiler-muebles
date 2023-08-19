@@ -12,6 +12,10 @@ exports.Product = connection_1.default.define('product', {
         primaryKey: true,
         autoIncrement: true
     },
+    category: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
+    },
     name: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
@@ -21,7 +25,7 @@ exports.Product = connection_1.default.define('product', {
         allowNull: false,
     },
     price: {
-        type: sequelize_1.DataTypes.DECIMAL,
+        type: sequelize_1.DataTypes.DOUBLE,
         allowNull: false,
     },
     image: {
