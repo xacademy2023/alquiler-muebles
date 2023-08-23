@@ -3,11 +3,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Product = void 0;
+exports.Category = void 0;
 const sequelize_1 = require("sequelize");
 const connection_1 = __importDefault(require("../db/connection"));
-exports.Product = connection_1.default.define("product", {
-    id: {
+const product_1 = require("./product");
+exports.Category = connection_1.default.define("category", {
+    idCategory: {
         type: sequelize_1.DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -16,20 +17,5 @@ exports.Product = connection_1.default.define("product", {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
-    description: {
-        type: sequelize_1.DataTypes.STRING,
-        allowNull: false,
-    },
-    price: {
-        type: sequelize_1.DataTypes.DECIMAL,
-        allowNull: false,
-    },
-    image: {
-        type: sequelize_1.DataTypes.STRING,
-        allowNull: false,
-    },
-    stock: {
-        type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false,
-    },
 });
+product_1.Product.belongsTo(exports.Category, { foreignKey: "idCategory" });

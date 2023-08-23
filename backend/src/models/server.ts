@@ -1,9 +1,10 @@
 import express, { Application } from "express";
 import routesProduct from "../routes/productRoutes";
 import routesUser from "../routes/userRoutes";
+import routesCategory from "../routes/categoryRoutes";
 import cors from "cors";
-import { Product } from "./product";
-import { User } from "./user";
+
+import sequelize from "../db/connection";
 
 class Server {
   private app: Application;
@@ -11,7 +12,7 @@ class Server {
 
   constructor() {
     this.app = express();
-    this.port = process.env.PORT || "3000";
+    this.port = process.env.PORT || "8080";
     this.listen();
     this.midlewares();
     this.routes();
@@ -27,6 +28,7 @@ class Server {
   routes() {
     this.app.use("/products", routesProduct);
     this.app.use("/users", routesUser);
+    this.app.use("/categories", routesCategory);
   }
 
   midlewares() {
@@ -36,8 +38,7 @@ class Server {
 
   async dbConnect() {
     try {
-      await Product.sync();
-      await User.sync();
+      await sequelize.sync({ alter: true });
     } catch (error) {
       console.error("Unable to connect to the database:", error);
     }
