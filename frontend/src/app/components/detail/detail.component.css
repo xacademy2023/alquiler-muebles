@@ -1,0 +1,53 @@
+
+.card {
+    margin-bottom: 30px;
+    position: fixed;
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #f8f4f4;
+    background-clip: border-box;
+    border: 0 solid transparent;
+    border-radius: 0;
+}
+.card .card-subtitle {
+    font-weight: 300;
+    margin-bottom: 10px;
+    color: #8898aa;
+}
+.table-product.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f1f0f0!important
+}
+.table-product td{
+    border-top: 0px solid #dee2e6 !important;
+    color: #728299!important;
+}
+
+.card-title, .card-subtitle{
+    margin-left: 710px;
+}
+
+img {
+    height: 500px;
+    width: 500px;
+}
+
+.p{
+    color: rgb(130, 190, 247);
+    margin-left: 250px;
+    margin-top: 20px;
+}
+
+.mt-5, .btn, .list-unstyled {
+    margin-left: 250px;
+    margin-top: 20px;
+}
+
+.btn2 {
+    margin-left: 50px;
+    margin-top: 5px;
+}

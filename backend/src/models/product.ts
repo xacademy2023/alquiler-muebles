@@ -7,6 +7,10 @@ export const Product = sequelize.define('product', {
         primaryKey: true,
         autoIncrement: true
     },
+    category: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -16,7 +20,7 @@ export const Product = sequelize.define('product', {
         allowNull: false,
     },
     price: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.DOUBLE,
         allowNull: false,
     },
     image: {
@@ -27,4 +31,4 @@ export const Product = sequelize.define('product', {
         type: DataTypes.INTEGER,
         allowNull: false,
     }
-})
+});
