@@ -28,3 +28,4 @@ export const Product = sequelize.define("product", {
     allowNull: false,
   },
 });
+
