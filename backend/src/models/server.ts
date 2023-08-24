@@ -4,6 +4,9 @@ import routesUser from "../routes/userRoutes";
 import routesCategory from "../routes/categoryRoutes";
 import cors from "cors";
 import sequelize from "../db/connection";
+import { Product } from './product';
+import { User } from './user';
+import { Category } from './category';
 
 class Server {
   private app: Application;
@@ -37,7 +40,10 @@ class Server {
 
   async dbConnect() {
     try {
-      await sequelize.sync({ alter: true });
+      //await sequelize.sync({ alter: true });
+      await Product.sync({ alter:true })
+            await User.sync({ alter:true });
+            await Category.sync({ alter:true });
     } catch (error) {
       console.error("Unable to connect to the database:", error);
     }
