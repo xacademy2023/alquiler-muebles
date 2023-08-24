@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <app-progress-bar *ngIf="loading"></app-progress-bar>
-
+<!--
 <div *ngIf="!loading" class="container mt-2 text-center">
   <div class="title">
     <h2>Productos</h2>
@@ -38,3 +38,28 @@
   </table>
   <h5 *ngIf="listProduct.length == 0">No hay productos disponibles</h5>
 </div>
+-->
+
+<h2 style="text-align: center;">Productos</h2>
+<mat-grid-list class="cardGrid" allowResizing="true" cols="3" rowHeight="24rem" gutterSize="1rem">
+  <mat-grid-tile *ngFor="let product of listProduct">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title>{{product.name}}</mat-card-title>
+        <mat-card-subtitle>
+          ID: {{product.id}} <br>
+          Disponibles: {{product.stock}}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <img src="{{product.image}}">
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" class="selectButton"
+          (click)="openDialog(product.id, product.name, product.image, product.description, product.stock)">
+          Seleccionar 
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
