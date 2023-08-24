@@ -6,7 +6,7 @@ import { userService } from "../services";
 import { where } from "sequelize";
 
 export const newUser = async (req: Request, res: Response) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, isSeller } = req.body;
 
   const user = await User.findOne({ where: { email: email } });
 
@@ -23,6 +23,7 @@ export const newUser = async (req: Request, res: Response) => {
       name: name,
       email: email,
       password: hashedPassword,
+      isSeller,
     });
     res.json({
       msg: `Uruario ${name} creado exitosamente!`,
@@ -44,6 +45,16 @@ export const loginUser = async (req: Request, res: Response) => {
     return res.status(400).json({
       msg: `El usuario ${email} no existe`,
     });
+  }
+
+  if (user.isSeller) {
+    const token = jwt.sign(
+      {
+        email: email,
+      },
+      process.env.SECRET_KEY || "secret"
+    );
+    return res.json(token);
   }
 
   const passwordValid = await bcrypt.compare(password, user.password);

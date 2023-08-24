@@ -7,31 +7,6 @@ export const getCategories = async (req: Request, res: Response) => {
   res.json(listCategories);
 };
 
-export const createCategoriesByDefault = async (
-  req: Request,
-  res: Response
-) => {
-  try {
-    await Category.create({
-      name: "Mesas",
-    });
-    await Category.create({
-      name: "Sillas",
-    });
-    await Category.create({
-      name: "Vajillas",
-    });
-    res.json({
-      msg: `Las categorías por defecto fueron creadas exitosamente!`,
-    });
-  } catch (error) {
-    res.status(400).json({
-      msg: "Error al crear las categorías por defecto ",
-      error,
-    });
-  }
-};
-
 export const newCategory = async (req: Request, res: Response) => {
   const { name } = req.body;
 
