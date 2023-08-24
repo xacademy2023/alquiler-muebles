@@ -61,22 +61,6 @@ export const deleteProduct = async (req: Request, res: Response) => {
   }
 };
 
-export const createProduct = async (req: Request, res: Response) => {
-  const { body } = req;
-
-  try {
-    await Product.create(body);
-    res.json({
-      msg: "Producto creado con exito!",
-    });
-  } catch (error) {
-    console.log(error);
-    res.json({
-      msg: "Upps!!! ocurrio un error, comuniquese con soporte",
-    });
-  }
-};
-
 export const updateProduct = async (req: Request, res: Response) => {
   const { body } = req;
   const { id } = req.params;

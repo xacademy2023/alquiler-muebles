@@ -1,6 +1,5 @@
 import { Router } from "express";
 import {
-  createProduct,
   deleteProduct,
   getProductId,
   getProducts,
@@ -11,11 +10,10 @@ import { validateToken, isSeller } from "../middlewares/validateToken";
 
 const router = Router();
 
-router.get("/", [validateToken, isSeller], getProducts);
-router.get("/:id", getProductId);
-router.delete("/:id", deleteProduct);
-router.post("/", newProduct);
-// router.post('/', createProduct);
-router.put("/:id", updateProduct);
+router.get("/", validateToken, getProducts);
+router.get("/:id", validateToken, getProductId);
+router.delete("/:id", [validateToken, isSeller], deleteProduct);
+router.post("/", [validateToken, isSeller], newProduct);
+router.put("/:id", [validateToken, isSeller], updateProduct);
 
 export default router;
