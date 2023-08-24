@@ -33,4 +33,12 @@ export class DashboardComponent implements OnInit {
       this.toastr.warning('Producto eliminado con exito!', 'Producto eliminado');
     })
   }
+
+  openDialog(id: number, name: string, img: string, description: string, stock: number): void {
+    this.dialog.open(DialogBoxComponent, { width: "600px", height: "400px",
+      data: {
+        id: id, name: name, image: img, description: description, stock: stock,
+      },
+    });
+  }
 }
