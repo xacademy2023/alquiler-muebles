@@ -1,0 +1,19 @@
+<div class="content">
+  <h2 mat-dialog-title>enviar {{currentProduct.name}} [id: {{currentProduct.id}}] al carro</h2>
+  <mat-dialog-content>
+    <img src="{{currentProduct.image}}">
+    <p>{{currentProduct.description}}</p>
+    Disponibles: {{currentProduct.stock}}
+  </mat-dialog-content>
+  <mat-dialog-actions class="content"> 
+    <input *ngIf="currentProduct.stock > 0" type="number" value="1" min="1" max="{{currentProduct.stock}}" style="width: 4rem; margin: auto 50% 1rem 50%;">
+    <button *ngIf="currentProduct.stock > 0" mat-raised-button color="primary" style="margin-left: 1rem;"
+      (click)="requestProduct()">
+      Enviar 
+    </button>
+    <button mat-raised-button color="accent" style="margin-left: 1rem;"
+      (click)="closeDialog()">
+      Regresar 
+    </button>
+  </mat-dialog-actions>
+</div>

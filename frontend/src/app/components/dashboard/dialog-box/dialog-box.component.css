@@ -1,0 +1,16 @@
+.content {
+  justify-content: center;
+  align-items: start;
+  text-align: center;
+  height: auto;
+  width: auto;
+  margin: auto;
+  padding: auto;
+}
+
+img{
+    display: block;
+    margin: auto;
+    height: 100px;
+    width: 100px;
+}

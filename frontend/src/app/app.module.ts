@@ -9,6 +9,9 @@ import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 // Componentes
@@ -22,6 +25,9 @@ import { CrudComponent } from './components/crud/crud.component';
 import { ProgressBarComponent } from './shared/progress-bar/progress-bar.component';
 import { HomeComponent } from './components/home/home.component';
 import { DetailComponent } from './components/detail/detail.component';
+import { DialogBoxComponent } from './components/dashboard/dialog-box/dialog-box.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +40,7 @@ import { DetailComponent } from './components/detail/detail.component';
     ProgressBarComponent,
     HomeComponent,
     DetailComponent,
+    DialogBoxComponent, 
   ],
   imports: [
     BrowserModule,
@@ -47,6 +54,9 @@ import { DetailComponent } from './components/detail/detail.component';
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),
+    MatGridListModule,
+    MatCardModule, 
+    MatDialogModule, 
   ],
   providers: [
   { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }
