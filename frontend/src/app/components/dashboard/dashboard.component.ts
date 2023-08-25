@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from '../../interfaces/products';
 import { ProductService } from '../../services/product.service';
+import { DialogBoxComponent } from "./dialog-box/dialog-box.component"; 
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +14,7 @@ export class DashboardComponent implements OnInit {
   listProduct: Product[] = []
   loading: boolean = false;
 
-  constructor(private _productService: ProductService, private toastr: ToastrService) { }
+  constructor(private _productService: ProductService, private toastr: ToastrService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -34,7 +36,7 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  openDialog(id: number, name: string, img: string, description: string, stock: number): void {
+  openDialog(id: number | undefined, name: string, img: string, description: string, stock: number): void {
     this.dialog.open(DialogBoxComponent, { width: "600px", height: "400px",
       data: {
         id: id, name: name, image: img, description: description, stock: stock,
