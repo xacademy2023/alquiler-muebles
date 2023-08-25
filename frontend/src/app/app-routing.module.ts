@@ -7,6 +7,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CrudComponent } from './components/crud/crud.component';
 import { DetailComponent } from './components/detail/detail.component';
+import { DetailsProdComponent } from './components/details-prod/details-prod.component';
 
 // Guards
 import { AuthGuard } from './utils/auth.guard';
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'edit/:id', component: CrudComponent},
   { path: 'login', component: LoginComponent },
   { path: 'signIn', component: SignInComponent },
+  { path: 'detailsProd', component: DetailsProdComponent},
   { path: 'dashboard', component: DashboardComponent ,canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'login', pathMatch: 'full' }
 ];
