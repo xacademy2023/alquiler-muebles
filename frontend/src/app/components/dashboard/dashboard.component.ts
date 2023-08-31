@@ -9,7 +9,13 @@ import { ProductService } from '../../services/product.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  listProduct: Product[] = []
+  listProduct: Product[] = [
+    { name: "silla 1", category: "silla", image: "", description: "esta es una silla", price: 400, stock: 1 },
+    { name: "silla 1", category: "silla", image: "", description: "esta es una silla", price: 400, stock: 1 },
+    { name: "silla 1", category: "silla", image: "", description: "esta es una silla", price: 400, stock: 1 },
+    { name: "silla 1", category: "silla", image: "", description: "esta es una silla", price: 400, stock: 1 },
+  ];
+  //listProduct: Product[] = []
   loading: boolean = false;
 
   constructor(private _productService: ProductService, private toastr: ToastrService) { }
