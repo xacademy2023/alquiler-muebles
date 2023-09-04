@@ -39,6 +39,8 @@ import { HomeComponent } from './components/home/home.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { DetailsProdComponent } from './components/details-prod/details-prod.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { FooterComponent } from './components/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +55,8 @@ import { HeaderComponent } from './components/header/header.component';
     DetailComponent,
     DetailsProdComponent,
     HeaderComponent,
+    LayoutComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
