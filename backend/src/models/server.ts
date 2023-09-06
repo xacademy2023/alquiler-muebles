@@ -1,12 +1,9 @@
 import express, { Application } from "express";
-import routesProduct from "../routes/productRoutes";
-import routesUser from "../routes/userRoutes";
-import routesCategory from "../routes/categoryRoutes";
+import {userRouter,categoryRouter,productRouter} from "../routes"
 import cors from "cors";
 import sequelize from "../db/connection";
-import { Product } from "./product";
-import { User } from "./user";
-import { Category } from "./category";
+import { Product, Category, User } from "./index";
+
 
 class Server {
   private app: Application;
@@ -28,9 +25,9 @@ class Server {
   }
 
   routes() {
-    this.app.use("/products", routesProduct);
-    this.app.use("/users", routesUser);
-    this.app.use("/categories", routesCategory);
+    this.app.use("/products", productRouter);
+    this.app.use("/users", userRouter);
+    this.app.use("/categories", categoryRouter);
   }
 
   midlewares() {

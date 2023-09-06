@@ -10,4 +10,4 @@ router.get("/", userController.getAllUsers)
 router.put("/:userId", userController.updateUser)
 router.delete("/:userId", userController.deleteUser) 
 
-export default router;
+export {router};
