@@ -5,7 +5,7 @@ import { User } from "../models/user";
 declare global {
   namespace Express {
     interface Request {
-      userEmail: string;
+      user: any;
     }
   }
 }
@@ -15,7 +15,7 @@ interface IPayload {
   iat: number;
 }
 
-export const validateToken = (
+export const validateToken = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -29,8 +29,10 @@ export const validateToken = (
         bearerToken,
         process.env.SECRET_KEY || "secret"
       ) as IPayload;
-      req.userEmail = payload.email;
-      console.log(req.userEmail);
+
+      req.user = (await User.findOne({
+        where: { email: payload.email },
+      })) as any;
       next();
     } catch (error) {
       res.status(401).json({
@@ -42,19 +44,4 @@ export const validateToken = (
       msg: "Acceso denegado",
     });
   }
-};
-
-export const isSeller = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  const user: any = await User.findOne({ where: { email: req.userEmail } });
-
-  if (!user.isSeller) {
-    return res
-      .status(403)
-      .json("Necesitas ser un vendedor para poder realizar esta acción");
-  }
-  next();
 };

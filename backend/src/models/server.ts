@@ -3,7 +3,6 @@ import routesProduct from "../routes/productRoutes";
 import routesUser from "../routes/userRoutes";
 import routesCategory from "../routes/categoryRoutes";
 import cors from "cors";
-import sequelize from "../db/connection";
 import { Product } from "./product";
 import { User } from "./user";
 import { Category } from "./category";

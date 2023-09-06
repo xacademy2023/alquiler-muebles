@@ -6,14 +6,15 @@ import {
   updateProduct,
   newProduct,
 } from "../controllers/productController";
-import { validateToken, isSeller } from "../middlewares/validateToken";
+import { validateToken } from "../middlewares/validateToken";
+import { isAuth } from "../middlewares/authUser";
 
 const router = Router();
 
-router.get("/", validateToken, getProducts);
-router.get("/:id", validateToken, getProductId);
-router.delete("/:id", [validateToken, isSeller], deleteProduct);
-router.post("/", [validateToken, isSeller], newProduct);
-router.put("/:id", [validateToken, isSeller], updateProduct);
+router.get("/", getProducts);
+router.get("/:id", getProductId);
+router.delete("/:id", [validateToken, isAuth(["vendedor"])], deleteProduct);
+router.post("/", [validateToken, isAuth(["vendedor"])], newProduct);
+router.put("/:id", [validateToken, isAuth(["vendedor"])], updateProduct);
 
 export default router;

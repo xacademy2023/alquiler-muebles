@@ -3,10 +3,9 @@ import bcrypt from "bcrypt";
 import { User } from "../models/user";
 import jwt from "jsonwebtoken";
 import { userService } from "../services";
-import { where } from "sequelize";
 
 export const newUser = async (req: Request, res: Response) => {
-  const { name, email, password, isSeller } = req.body;
+  const { name, email, password, role } = req.body;
 
   const user = await User.findOne({ where: { email: email } });
 
@@ -23,7 +22,7 @@ export const newUser = async (req: Request, res: Response) => {
       name: name,
       email: email,
       password: hashedPassword,
-      isSeller,
+      role,
     });
     res.json({
       msg: `Uruario ${name} creado exitosamente!`,
@@ -47,17 +46,8 @@ export const loginUser = async (req: Request, res: Response) => {
     });
   }
 
-  if (user.isSeller) {
-    const token = jwt.sign(
-      {
-        email: email,
-      },
-      process.env.SECRET_KEY || "secret"
-    );
-    return res.json(token);
-  }
-
   const passwordValid = await bcrypt.compare(password, user.password);
+
   if (!passwordValid) {
     return res.status(400).json({
       msg: "Password incorrecto",
@@ -66,7 +56,8 @@ export const loginUser = async (req: Request, res: Response) => {
 
   const token = jwt.sign(
     {
-      email: email
+      email: email,
+      role: user.role,
     },
     process.env.SECRET_KEY || "secret"
   );
@@ -100,18 +91,16 @@ export const getUser = async (req: Request, res: Response) => {
 
 export const updateUser = async (req: Request, res: Response) => {
   try {
-    console.log(req.body)
     const updatedUser = await userService.updateUser(
       req.params.userId,
       req.body
     );
-
     if (!updatedUser) {
       res
         .status(404)
         .json({ action: "updateUser", error: "error when updating user" });
     } else {
-      res.json({ id: req.params.userId, ...req.body });
+      res.json({ msg: "Usuario actualizado correctamente" });
     }
   } catch (error: any) {
     res.status(500).json({ action: "updateUser", error: error.message });
@@ -120,10 +109,10 @@ export const updateUser = async (req: Request, res: Response) => {
 
 export const deleteUser = async (req: Request, res: Response) => {
   try {
-    const {userId } = req.params
+    const { userId } = req.params;
 
     const deletedUser = await userService.deleteUser(userId);
-    if (deletedUser=== 0) {
+    if (deletedUser === 0) {
       res
         .status(404)
         .json({ action: "deleteUser", error: "error when deleting user" });
