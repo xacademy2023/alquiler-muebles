@@ -6,7 +6,7 @@ import {
   updateProduct,
   newProduct,
 } from "../controllers/productController";
-import { validateToken, isSeller } from "../middlewares/validateToken";
+import { validateToken, isSeller } from "../middlewares";
 
 const router = Router();
 
@@ -16,4 +16,5 @@ router.delete("/:id", [validateToken, isSeller], deleteProduct);
 router.post("/", [validateToken, isSeller], newProduct);
 router.put("/:id", [validateToken, isSeller], updateProduct);
 
-export default router;
+
+export {router};

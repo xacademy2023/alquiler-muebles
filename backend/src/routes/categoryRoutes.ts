@@ -6,4 +6,4 @@ const router = Router();
 router.get("/", getCategories);
 router.post("/", newCategory);
 
-export default router;
+export {router};

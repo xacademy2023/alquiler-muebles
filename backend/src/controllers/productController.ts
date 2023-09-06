@@ -1,87 +1,75 @@
 import { Request, Response } from "express";
-import { Product } from "../models/product";
-import { Category } from "../models/category";
+import {productService} from "../services"
+
 
 export const getProducts = async (req: Request, res: Response) => {
-  const listProducts = await Product.findAll({
-    include: [{ model: Category, attributes: ["name"] }],
-  });
-  res.json(listProducts);
-};
+  try{
+  const listProducts = await productService.getProducts()
+  res.json(listProducts)
+  }catch(error:any){
+    res.status(500).json({ action: "getProducts", error: error.message });
+}}
 
 export const newProduct = async (req: Request, res: Response) => {
-  const { name, description, price, image, stock, idCategory } = req.body;
-
   try {
-    await Product.create({
-      name,
-      description,
-      price,
-      image,
-      stock,
-      idCategory,
-    });
+    const newProduct = await productService.createProduct(req.body);
     res.json({
-      msg: `El producto ${name} fue creado exitosamente!`,
+      newProduct,
     });
-  } catch (error) {
-    res.status(400).json({
-      msg: "Error al crear un usuario",
-      error,
-    });
+  } catch (error:any) {
+    res.status(500).json({ action: "getProducts", error: error.message })
   }
 };
 
 export const getProductId = async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const product = await Product.findByPk(id);
-
-  if (product) {
-    res.json(product);
-  } else {
-    res.status(404).json({
-      msg: `No existe un producto con el id ${id}`,
-    });
+  try {
+    const product = await productService.getProductId(req.params.id);
+    if (!product) {
+      res
+        .status(404)
+        .json({ action: "getProduct", error: "error when fetching product" });
+    } else {
+      res.json(product);
+    }
+  } catch (error: any) {
+    res.status(500).json({ action: "getProduct", error: error.message });
   }
 };
 
-export const deleteProduct = async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const product = await Product.findByPk(id);
 
-  if (!product) {
-    res.status(404).json({
-      msg: `No existe un producto con el id ${id}`,
-    });
-  } else {
-    await product.destroy();
-    res.json({
-      msg: `Producto con el id ${id} eliminado con exito!`,
-    });
+export const deleteProduct = async (req: Request, res: Response) => {
+  try {
+    const {id } = req.params
+    const deletedProduct = await productService.deleteProduct(id);
+    if (deletedProduct=== 0) {
+      res
+        .status(404)
+        .json({ action: "deleteProduct", error: "error when deleting product" });
+    } else {
+      res.json({ messaje: `Producto con el id ${id} eliminado con exito!` });
+    }
+  } catch (error: any) {
+    res.status(500).json({ action: "deleteProduct", error: error.message });
   }
 };
 
 export const updateProduct = async (req: Request, res: Response) => {
-  const { body } = req;
-  const { id } = req.params;
-
   try {
-    const product = await Product.findByPk(id);
+    const {id } = req.params
+    const updatedProduct = await productService.updateProduct(
+      id,
+      req.body
+    );
 
-    if (product) {
-      await product.update(body);
-      res.json({
-        msg: "Producto actualizado con exito!",
-      });
+    if (!updatedProduct) {
+      res
+        .status(404)
+        .json({ action: "updateProduct", error: "error when updating product" });
     } else {
-      res.status(404).json({
-        msg: `No existe un producto con el id ${id}`,
-      });
+      res.json({ id: req.params.userId, ...req.body });
     }
-  } catch (error) {
-    console.log(error);
-    res.json({
-      msg: "Upps!!! ocurrio un error, comuniquese con soporte",
-    });
+  } catch (error: any) {
+    res.status(500).json({ action: "updateProduct", error: error.message });
   }
-};
+}
+;
