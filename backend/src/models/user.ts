@@ -20,8 +20,8 @@ export const User = sequelize.define("user", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  isSeller: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
+  role: {
+    type: DataTypes.ENUM("admin", "comprador", "vendedor"),
+    defaultValue: "comprador",
   },
 });

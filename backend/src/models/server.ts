@@ -4,7 +4,6 @@ import cors from "cors";
 import sequelize from "../db/connection";
 import { Product, Category, User } from "./index";
 
-
 class Server {
   private app: Application;
   private port: string;

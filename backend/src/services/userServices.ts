@@ -2,7 +2,6 @@ import { where } from "sequelize";
 import { User } from "../models";
 import bcrypt from "bcrypt";
 
-
 export const getByEmail =async(email:string)=>{
   try{
     const user =await User.findOne({ where: { email: email} });
@@ -49,9 +48,10 @@ export const getUser = async (userId: string) => {
 
 export const updateUser = async (userId: string, updatedUser: any) => {
   try {
-    console.log(updatedUser)
+    const { password } = updatedUser;
+    const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.update(
-      { ...updatedUser },
+      { ...updatedUser, password: hashedPassword },
       {
         where: {
           id: userId,
@@ -66,11 +66,10 @@ export const updateUser = async (userId: string, updatedUser: any) => {
 
 export const deleteUser = async (userId: any) => {
   try {
-  const user = await User.destroy({
+    const user = await User.destroy({
       where: {
         id: userId,
       },
-    
     });
     return user;
   } catch (error) {

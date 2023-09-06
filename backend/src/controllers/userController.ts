@@ -30,17 +30,8 @@ export const loginUser = async (req: Request, res: Response) => {
     });
   }
 
-  if (user.isSeller) {
-    const token = jwt.sign(
-      {
-        email: email,
-      },
-      process.env.SECRET_KEY || "secret"
-    );
-    return res.json(token);
-  }
-
   const passwordValid = await bcrypt.compare(password, user.password);
+
   if (!passwordValid) {
     return res.status(400).json({
       msg: "Password incorrecto",
@@ -50,6 +41,7 @@ export const loginUser = async (req: Request, res: Response) => {
   const token = jwt.sign(
     {
       email: email,
+      role: user.role,
     },
     process.env.SECRET_KEY || "secret"
   );
@@ -87,13 +79,12 @@ export const updateUser = async (req: Request, res: Response) => {
       req.params.userId,
       req.body
     );
-
     if (!updatedUser) {
       res
         .status(404)
         .json({ action: "updateUser", error: "error when updating user" });
     } else {
-      res.json({ id: req.params.userId, ...req.body });
+      res.json({ msg: "Usuario actualizado correctamente" });
     }
   } catch (error: any) {
     res.status(500).json({ action: "updateUser", error: error.message });
