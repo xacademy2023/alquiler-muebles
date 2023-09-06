@@ -12,23 +12,26 @@ import { DetailsProdComponent } from './components/details-prod/details-prod.com
 // Guards
 import { AuthGuard } from './utils/auth.guard';
 import { HomeComponent } from './components/home/home.component';
-
+import { LayoutComponent } from './components/layout/layout.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'add', component: CrudComponent},
-  { path: 'home', component: HomeComponent},
-  { path: 'detail/:id', component: DetailComponent},
-  { path: 'edit/:id', component: CrudComponent},
+  { path: 'add', component: CrudComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'detail/:id', component: DetailComponent },
+  { path: 'edit/:id', component: CrudComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signIn', component: SignInComponent },
-  { path: 'detailsProd', component: DetailsProdComponent},
-  { path: 'dashboard', component: DashboardComponent/*, canActivate: [AuthGuard] */},
-  { path: '**', redirectTo: 'login', pathMatch: 'full' }
+  { path: 'detailsProd', component: DetailsProdComponent },
+  {
+    path: 'dashboard',
+    component: LayoutComponent /*, canActivate: [AuthGuard] */,
+  },
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

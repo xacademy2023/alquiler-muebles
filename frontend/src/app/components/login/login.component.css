@@ -1,4 +1,4 @@
-.container{
+.container {
   display: flex;
   justify-content: center;
   padding-top: 150px;
@@ -6,7 +6,8 @@
 }
 
 .form_main {
-  width: 220px;
+  width: 350px;
+  height: 420px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,7 +63,7 @@
   border-bottom: 2px solid rgb(173, 173, 173);
   margin: 10px 0;
   color: black;
-  font-size: .8em;
+  font-size: 0.8em;
   font-weight: 500;
   box-sizing: border-box;
   padding-left: 30px;
@@ -87,7 +88,7 @@
   background-color: rgb(162, 104, 255);
   height: 30px;
   color: white;
-  font-size: .8em;
+  font-size: 0.8em;
   font-weight: 500;
   letter-spacing: 1px;
   margin: 10px;
@@ -100,11 +101,10 @@
 
 .forgotLink {
   z-index: 2;
-  font-size: .7em;
+  font-size: 0.7em;
   font-weight: 500;
   color: rgb(44, 24, 128);
   text-decoration: none;
   padding: 8px 15px;
   border-radius: 20px;
 }
-
