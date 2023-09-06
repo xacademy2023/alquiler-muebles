@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { userController } from "../controllers";
-import { validateToken } from "../middlewares/validateToken";
-import { isAuth } from "../middlewares/authUser";
+import { validateToken } from "../middlewares";
+import { isAuth } from "../middlewares";
 
 const router = Router();
 
@@ -20,5 +20,4 @@ router.delete(
   userController.deleteUser
 );
 
-export {router};
-
+export { router };

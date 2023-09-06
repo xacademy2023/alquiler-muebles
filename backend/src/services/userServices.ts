@@ -1,19 +1,18 @@
-import { where } from "sequelize";
 import { User } from "../models";
 import bcrypt from "bcrypt";
 
-export const getByEmail =async(email:string)=>{
-  try{
-    const user =await User.findOne({ where: { email: email} });
-    return user
-    }catch (error) {
-      console.error("Error when fetching uses", error);
-    }   
-}
+export const getByEmail = async (email: string) => {
+  try {
+    const user = await User.findOne({ where: { email: email } });
+    return user;
+  } catch (error) {
+    console.error("Error when fetching uses", error);
+  }
+};
 
-export const createUser = async(user:any)=>{
-  try{
-    const {name, email, password,isSeller} = user
+export const createUser = async (user: any) => {
+  try {
+    const { name, email, password, isSeller } = user;
     const hashedPassword = await bcrypt.hash(password, 10);
 
     await User.create({
@@ -21,12 +20,11 @@ export const createUser = async(user:any)=>{
       email: email,
       password: hashedPassword,
       isSeller,
-    })
-
-  }catch (error) {
+    });
+  } catch (error) {
     console.error("Error when creating user", error);
   }
-}
+};
 
 export const getAllUsers = async () => {
   try {

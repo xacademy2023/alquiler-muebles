@@ -1,3 +1,4 @@
-import {isSeller, validateToken} from "./validateToken";
+import { validateToken } from "./validateToken";
+import { isAuth } from "./authUser";
 
-export {isSeller, validateToken};
+export { isAuth, validateToken };

@@ -7,8 +7,7 @@ import {
   newProduct,
 } from "../controllers/productController";
 import { validateToken } from "../middlewares/validateToken";
-import { isAuth } from "../middlewares/authUser";
-
+import { isAuth } from "../middlewares";
 
 const router = Router();
 
@@ -18,5 +17,4 @@ router.delete("/:id", [validateToken, isAuth(["vendedor"])], deleteProduct);
 router.post("/", [validateToken, isAuth(["vendedor"])], newProduct);
 router.put("/:id", [validateToken, isAuth(["vendedor"])], updateProduct);
 
-
-export {router};
+export { router };
