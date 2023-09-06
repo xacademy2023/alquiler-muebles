@@ -1,26 +1,26 @@
 import { NextFunction, Request, Response } from "express";
 import { Category } from "../models/category";
+import {categoryService, userService} from "../services"
+
 
 export const getCategories = async (req: Request, res: Response) => {
-  const listCategories = await Category.findAll();
+ try{
+  const listCategories = await categoryService.getAllCategories();
 
   res.json(listCategories);
+}catch(error:any){
+  res.status(500).json({ action: "getAllCategories", error: error.message })
+}
 };
 
-export const newCategory = async (req: Request, res: Response) => {
-  const { name } = req.body;
-
-  try {
-    await Category.create({
-      name,
-    });
-    res.json({
-      msg: `La categoría ${name} fue creada exitosamente!`,
-    });
-  } catch (error) {
-    res.status(400).json({
-      msg: "Error al crear una categoría",
-      error,
-    });
+export const newCategory =  async (req: Request, res: Response) => {
+  const {name} =req.body
+  try{
+  const category =  await categoryService.createCategory(name)
+  res.json(category);
+  }catch(error:any){
+    res.status(500).json({action: "createCategory", error: error.message})
   }
-};
+}
+
+

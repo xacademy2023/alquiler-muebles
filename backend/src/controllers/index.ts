@@ -1,3 +1,5 @@
-import * as userController from "./userController"
+import * as userController from "./userController";
+import * as productController from "./productController";
+import * as categoryController from "./categoryController";
 
-export {userController};
+export {userController, productController, categoryController};

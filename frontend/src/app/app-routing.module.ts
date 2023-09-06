@@ -15,7 +15,7 @@ import { HomeComponent } from './components/home/home.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'add', component: CrudComponent},
   { path: 'home', component: HomeComponent},
   { path: 'detail/:id', component: DetailComponent},
@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signIn', component: SignInComponent },
   { path: 'detailsProd', component: DetailsProdComponent},
-  { path: 'dashboard', component: DashboardComponent ,canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent/*, canActivate: [AuthGuard] */},
   { path: '**', redirectTo: 'login', pathMatch: 'full' }
 ];
 

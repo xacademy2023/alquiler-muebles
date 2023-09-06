@@ -7,4 +7,4 @@ const router = Router();
 router.get("/", getCategories);
 router.post("/", isAuth(["admin"]), newCategory);
 
-export default router;
+export {router};
