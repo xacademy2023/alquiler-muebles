@@ -10,24 +10,25 @@ import { DetailComponent } from './components/detail/detail.component';
 import { DetailsProdComponent } from './components/details-prod/details-prod.component';
 
 // Guards
-import { AuthGuard } from './utils/auth.guard';
+import { authGuard } from './utils/auth.guard';
 import { HomeComponent } from './components/home/home.component';
 import { LayoutComponent } from './components/layout/layout.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'add', component: CrudComponent },
+  { path: 'add', component: CrudComponent, canActivate: [authGuard] },
   { path: 'home', component: HomeComponent },
   { path: 'detail/:id', component: DetailComponent },
-  { path: 'edit/:id', component: CrudComponent },
+  { path: 'edit/:id', component: CrudComponent, canActivate: [authGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'signIn', component: SignInComponent },
   { path: 'detailsProd', component: DetailsProdComponent },
   {
     path: 'dashboard',
-    component: LayoutComponent /*, canActivate: [AuthGuard] */,
+    component: LayoutComponent,
+    canActivate: [authGuard],
   },
-  { path: '**', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({

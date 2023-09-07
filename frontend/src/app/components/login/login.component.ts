@@ -9,45 +9,50 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  name: string = ''; 
+  name: string = '';
   email: string = '';
   password: string = '';
   loading: boolean = false;
 
-  constructor(private toastr: ToastrService,
+  constructor(
+    private toastr: ToastrService,
     private _userService: UserService,
     private router: Router,
-    private _errorService: ErrorService) { }
+    private _errorService: ErrorService
+  ) {}
 
   ngOnInit(): void {
+    const hasToken = localStorage.getItem('token');
+    if (hasToken) {
+      this.router.navigate(['/home']);
+    }
   }
 
   login() {
-
     if (this.email == '' || this.password == '') {
       this.toastr.error('Todos los campos son obligatorios', 'Error');
-      return
+      return;
     }
 
     const user: User = {
       name: this.name,
       email: this.email,
-      password: this.password
-    }
+      password: this.password,
+    };
 
     this.loading = true;
     this._userService.login(user).subscribe({
       next: (token) => {
-        localStorage.setItem("token", JSON.stringify(token));
-        this.router.navigate(['/home'])
+        localStorage.setItem('token', token);
+        this.router.navigate(['/home']);
       },
       error: (e: HttpErrorResponse) => {
         this._errorService.msjError(e);
-        this.loading = false
-      }
-    })
+        this.loading = false;
+      },
+    });
   }
 }
