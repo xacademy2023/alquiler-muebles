@@ -3,17 +3,24 @@ import { ToastrService } from 'ngx-toastr';
 import { Product } from '../../interfaces/products';
 import { ProductService } from '../../services/product.service';
 
+type User = {
+  name: string;
+  email: string;
+  isSeller: boolean;
+}
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  listProduct: Product[] = [
-    { name: "silla 1", category: "silla", image: "", description: "esta es una silla", price: 400, stock: 1 },
-    { name: "silla 1", category: "silla", image: "", description: "esta es una silla", price: 400, stock: 1 },
-    { name: "silla 1", category: "silla", image: "", description: "esta es una silla", price: 400, stock: 1 },
-    { name: "silla 1", category: "silla", image: "", description: "esta es una silla", price: 400, stock: 1 },
+  usersList: User[] = [
+    { name: "Luis1", email: "luis1@gmail.com", isSeller: false },
+    { name: "Luis2", email: "luis2@gmail.com", isSeller: true },
+    { name: "Luis3", email: "luis3@gmail.com", isSeller: true },
+    { name: "Luis4", email: "luis4@gmail.com", isSeller: false },
+    { name: "Luis5", email: "luis5@gmail.com", isSeller: true },
   ];
   //listProduct: Product[] = []
   loading: boolean = false;
@@ -21,9 +28,23 @@ export class DashboardComponent implements OnInit {
   constructor(private _productService: ProductService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.getProducts();
+    //this.getProducts();
+    this.getUsers();
   }
 
+  getUsers(): void {
+
+  }
+
+  deleteUser(email: string): void {
+
+  }
+
+  setSellerState(user: User, isSeller: boolean): void {
+    user.isSeller = isSeller;
+  }
+
+  /*
   getProducts() {
       this.loading = true;
       this._productService.getProducts().subscribe((data: Product[]) => {
@@ -39,4 +60,5 @@ export class DashboardComponent implements OnInit {
       this.toastr.warning('Producto eliminado con exito!', 'Producto eliminado');
     })
   }
+  */
 }
