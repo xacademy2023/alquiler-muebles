@@ -13,7 +13,12 @@
       </div>
       <div class="container-user">
         <i id="usuario" class="fa-solid fa-user"></i>
-        <a class="inicio-sesion" href="login.html">Inicia sesión</a>
+        <button *ngIf="!isLogged" class="inicio-sesion" (click)="login()">
+          Inicia sesión
+        </button>
+        <button *ngIf="isLogged" class="inicio-sesion" (click)="logout()">
+          Cerrar sesión
+        </button>
         <!--<i id="cesta" class="fa-solid fa-basket-shopping"></i>
                     <div class="shopping-content-cart">
                         <span class="text-carrito">Carrito</span>
