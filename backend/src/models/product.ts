@@ -38,7 +38,7 @@ export const Product = sequelize.define(
       allowNull: false,
     },
     images: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
       get() {
         return this.getDataValue("images").split(";");
