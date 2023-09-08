@@ -7,73 +7,73 @@ module.exports = {
       await queryInterface.bulkInsert('products', [
         {
           name: 'Mesa rectangular',
+          shortDescription: 'mesa rectangular para 30 personas',
           description: 'mesa rectangular para 30 personas',
           price: 5000,
-          image:'https://hosdecora.com/blog/wp-content/uploads/2018/03/mesas-catering-744x496.png',
           stock: 30, 
-          createdAt: new Date(),
-          updatedAt: new Date(),
-          idCategory: 1
+          category: "1",
+          coverImage:'https://hosdecora.com/blog/wp-content/uploads/2018/03/mesas-catering-744x496.png',
+          images:'https://hosdecora.com/blog/wp-content/uploads/2018/03/mesas-catering-744x496.png'
         },
         {
           name: 'Mesa redonda',
+          shortDescription: 'mesa redonda para 10 personas',
           description: 'mesa redonda para 10 personas',
           price: 2000,
-          image:'https://industriaskerosti.com/wp-content/uploads/2022/12/mesas-para-eventos-sociales-en-industrias-kerosti.jpg',
           stock: 40, 
-          createdAt: new Date(),
-          updatedAt: new Date(),
-          idCategory: 1
+          category: "1",
+          coverImage:'https://industriaskerosti.com/wp-content/uploads/2022/12/mesas-para-eventos-sociales-en-industrias-kerosti.jpg',
+          images:'https://industriaskerosti.com/wp-content/uploads/2022/12/mesas-para-eventos-sociales-en-industrias-kerosti.jpg'
         },
         {
           name: 'Silla Tiffany',
+          shortDescription: 'silla Tiffany blanca',
           description: 'silla Tiffany blanca',
           price: 1000,
-          image:'https://industriaskerosti.com/wp-content/uploads/2022/11/sillas-tiffany-industrias-kerosti.jpg',
-          stock: 1000, 
-          createdAt: new Date(),
-          updatedAt: new Date(),
-          idCategory: 2
+          stock: 1000,
+          category: "2",
+          coverImage:'https://industriaskerosti.com/wp-content/uploads/2022/11/sillas-tiffany-industrias-kerosti.jpg', 
+          images:'https://industriaskerosti.com/wp-content/uploads/2022/11/sillas-tiffany-industrias-kerosti.jpg'
         },
         {
           name: 'Silla Napoleon',
+          shortDescription: 'silla Napoleon dorada', 
           description: 'silla Napoleon dorada',
           price: 1000,
-          image:'https://i0.wp.com/www.eventosmilmar.com/wp-content/uploads/2020/01/napole%C3%B3n-dorada-coj%C3%ADn-polipiel.jpg?fit=1051%2C1051&ssl=1',
-          stock: 1000, 
-          createdAt: new Date(),
-          updatedAt: new Date(),
-          idCategory: 2
+          stock: 1000,
+          category: "2",
+          coverImage:'https://i0.wp.com/www.eventosmilmar.com/wp-content/uploads/2020/01/napole%C3%B3n-dorada-coj%C3%ADn-polipiel.jpg?fit=1051%2C1051&ssl=1', 
+          images:'https://i0.wp.com/www.eventosmilmar.com/wp-content/uploads/2020/01/napole%C3%B3n-dorada-coj%C3%ADn-polipiel.jpg?fit=1051%2C1051&ssl=1'
         },
         {
           name: 'Juego de vajilla estándar',
+          shortDescription: 'Juego de vajilla estándar que consta de tres platos, tres copas y cubiertos',
           description: 'Juego de vajilla estándar que consta de tres platos, tres copas y cubiertos',
           price: 1000,
-          image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbKfeIqSrt9LGtEjrmchPx7etbTyOmH6rW-A&usqp=CAU',
           stock: 3000, 
-          createdAt: new Date(),
-          updatedAt: new Date(),
-          idCategory: 3
+          category: "3",
+          coverImage:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbKfeIqSrt9LGtEjrmchPx7etbTyOmH6rW-A&usqp=CAU',
+          images:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbKfeIqSrt9LGtEjrmchPx7etbTyOmH6rW-A&usqp=CAU'
         },
         {
           name: 'Juego de vajilla premiun',
+          shortDescription: 'Juego de premiun estándar que consta de tres platos, tres copas y cubiertos',
           description: 'Juego de premiun estándar que consta de tres platos, tres copas y cubiertos',
           price: 1000,
-          image:'https://www.options.es/media/catalog/category/assiettes-V2.jpg',
-          stock: 3000, 
-          createdAt: new Date(),
-          updatedAt: new Date(),
-          idCategory: 3
+          stock: 3000,
+          category: "3",
+          coverImage:'https://www.options.es/media/catalog/category/assiettes-V2.jpg', 
+          images:'https://www.options.es/media/catalog/category/assiettes-V2.jpg' 
         },
         {
           name: 'Centro de mesa floral',
+          shortDescription: 'Centro de mesa floral cuadrado de  40cm por 40cm',
           description: 'Centro de mesa floral cuadrado de  40cm por 40cm',
           price: 1000,
-          image:'https://judithjorda.com/wp-content/uploads/2015/12/1-min-34.jpg',
-          stock: 3000, 
-          createdAt: new Date(),
-          updatedAt: new Date(),
-          idCategory: 4
+          stock: 3000,
+          category: "4",
+          coverImage:'https://judithjorda.com/wp-content/uploads/2015/12/1-min-34.jpg', 
+          images:'https://judithjorda.com/wp-content/uploads/2015/12/1-min-34.jpg'
         },
       ], {});
     
