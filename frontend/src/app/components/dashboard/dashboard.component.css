@@ -1,47 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
-img{
-    height: 50px;
-    width: 50px;
+img {
+  height: 50px;
+  width: 50px;
 }
 
 .table {
-   box-shadow: 1px 1px 5px rgb(107, 105, 105);
-    border: solid rgba(3, 133, 255, 0) 2px;
-    margin-top: 10px;
+  box-shadow: 1px 1px 5px rgb(107, 105, 105);
+  border: solid rgba(3, 133, 255, 0) 2px;
+  margin-top: 10px;
 }
 
-.title{
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
+.title {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .button {
-    position: relative;
-    display: inline-block;
-    margin: 15px;
-    padding: 15px 30px;
-    text-align: center;
-    font-size: 18px;
-    letter-spacing: 1px;
-    text-decoration: none;
-    color: #725AC1;
-    background: transparent;
-    cursor: pointer;
-    transition: ease-out 0.5s;
-    border: 2px solid #725AC1;
-    border-radius: 10px;
-    box-shadow: inset 0 0 0 0 #725AC1;
-  }
-  
-  .button:hover {
-    color: white;
-    box-shadow: inset 0 -100px 0 0 #725AC1;
-  }
-  
-  .button:active {
-    transform: scale(0.9);
-  }
+  position: relative;
+  display: inline-block;
+  margin: 15px;
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #725ac1;
+  background: transparent;
+  cursor: pointer;
+  transition: ease-out 0.5s;
+  border: 2px solid #725ac1;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 0 #725ac1;
+}
 
- 
+.button:hover {
+  color: white;
+  box-shadow: inset 0 -100px 0 0 #725ac1;
+}
+
+.button:active {
+  transform: scale(0.9);
+}

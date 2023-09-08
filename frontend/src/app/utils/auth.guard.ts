@@ -1,37 +1,28 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
+import jwt_decode from 'jwt-decode';
 
 export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const token = localStorage.getItem('token');
 
   if (token) {
-    return true;
-  } else {
-    router.navigate(['/login']);
-    return false;
+    const decodedToken: any = jwt_decode(token);
+    const userRoles = decodedToken.role;
+    if (userRoles.includes('admin') && route.data['role'] === 'admin') {
+      return true;
+    } else if (
+      userRoles.includes('vendedor') &&
+      route.data['role'] === 'vendedor'
+    ) {
+      return true;
+    } else if (
+      userRoles.includes('comprador') &&
+      route.data['role'] === 'comprador'
+    ) {
+      return true;
+    }
   }
+  router.navigate(['/login']);
+  return false;
 };
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class AuthGuard implements CanActivate {
-
-//   constructor(private router: Router) {
-
-//   }
-//   canActivate(
-//     route: ActivatedRouteSnapshot,
-//     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-//     const token = localStorage.getItem('token')
-//     if (token == undefined) {
-//       this.router.navigate(['/login'])
-//       return false
-//     }
-
-//     return true;
-//   }
-
-// }
