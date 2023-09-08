@@ -1,11 +1,8 @@
 import { Product } from "../models/product";
-import { Category } from "../models/category";
 
 export const getProducts = async () => {
   try {
-    const listProducts = await Product.findAll({
-      include: [{ model: Category, attributes: ["name"] }],
-    });
+    const listProducts = await Product.findAll();
     return listProducts;
   } catch (error) {
     console.error("Error when fetching products", error);
@@ -13,15 +10,26 @@ export const getProducts = async () => {
 };
 
 export const createProduct = async (product: any) => {
-  const { name, description, price, image, stock, idCategory } = product;
+  const {
+    name,
+    shortDescription,
+    description,
+    price,
+    stock,
+    category,
+    coverImage,
+    images,
+  } = product;
   try {
     const newProduct = await Product.create({
       name,
+      shortDescription,
       description,
       price,
-      image,
       stock,
-      idCategory,
+      category,
+      coverImage,
+      images,
     });
     return newProduct;
   } catch (error) {
