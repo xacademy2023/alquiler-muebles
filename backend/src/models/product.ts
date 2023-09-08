@@ -10,7 +10,7 @@ export const Product = sequelize.define(
       autoIncrement: true,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(),
       allowNull: false,
     },
     shortDescription: {
@@ -38,7 +38,7 @@ export const Product = sequelize.define(
       allowNull: false,
     },
     images: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING(1500),
       allowNull: false,
       get() {
         return this.getDataValue("images").split(";");
