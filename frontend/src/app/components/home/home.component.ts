@@ -6,7 +6,7 @@ import { ProductService } from '../../services/product.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
   //listProduct: Product[] = [];
@@ -22,10 +22,13 @@ export class HomeComponent implements OnInit {
     { name: "silla 8", category: "silla", image: "../../../assets/img/blue_chair.jpg", description: "esta es una silla", price: 400, stock: 1 },
     { name: "silla 9", category: "silla", image: "../../../assets/img/blue_chair.jpg", description: "esta es una silla", price: 400, stock: 1 },
   ];
-  
+
   loading: boolean = false;
 
-  constructor(private _productService: ProductService, private toastr: ToastrService) { }
+  constructor(
+    private _productService: ProductService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.getProducts();
@@ -37,8 +40,7 @@ export class HomeComponent implements OnInit {
     this._productService.getProducts().subscribe((data: Product[]) => {
       this.listProduct = data;
       this.loading = false;
-    })
+    });
     */
   }
-
 }

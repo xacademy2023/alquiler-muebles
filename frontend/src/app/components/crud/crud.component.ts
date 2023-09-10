@@ -8,7 +8,7 @@ import { ProductService } from 'src/app/services/product.service';
 @Component({
   selector: 'app-crud',
   templateUrl: './crud.component.html',
-  styleUrls: ['./crud.component.css']
+  styleUrls: ['./crud.component.css'],
 })
 export class CrudComponent implements OnInit {
   form: FormGroup;
@@ -16,24 +16,25 @@ export class CrudComponent implements OnInit {
   id: number;
   operacion: string = 'Agregar ';
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private _productService: ProductService,
     private router: Router,
     private toastr: ToastrService,
-    private aRouter: ActivatedRoute) {
+    private aRouter: ActivatedRoute
+  ) {
     this.form = this.fb.group({
       category: ['', Validators.required],
       name: ['', Validators.required],
-      description: ['', Validators.required],
+      shortDescription: ['', Validators.required],
       price: [null, Validators.required],
-      image: ['', Validators.required],
+      coverImage: ['', Validators.required],
       stock: [null, Validators.required],
-    })
+    });
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
   }
 
   ngOnInit(): void {
-
     if (this.id != 0) {
       this.operacion = 'Editar ';
       this.getProduct(this.id);
@@ -47,40 +48,46 @@ export class CrudComponent implements OnInit {
       this.form.patchValue({
         category: product.category,
         name: product.name,
-        description: product.description,
+        shortDescription: product.shortDescription,
         price: product.price,
-        image: product.image,
+        coverImage: product.coverImage,
         stock: product.stock,
-      })
-    })
+      });
+    });
   }
 
   addProduct() {
     const product: Product = {
-
       category: this.form.value.category,
       name: this.form.value.name,
-      description: this.form.value.description,
+      shortDescription: this.form.value.shortDescription,
       price: this.form.value.price,
-      image: this.form.value.image,
+      coverImage: this.form.value.coverImage,
       stock: this.form.value.stock,
-    }
+      description: '',
+      images: [],
+    };
 
     this.loading = true;
     if (this.id !== 0) {
       product.id = this.id;
       this._productService.updateProduct(this.id, product).subscribe(() => {
-        this.toastr.info(`Producto ${product.name} actualizado con exito!`, 'Producto actualizado');
+        this.toastr.info(
+          `Producto ${product.name} actualizado con exito!`,
+          'Producto actualizado'
+        );
         this.loading = false;
         this.router.navigate(['/dashboard']);
-      })
+      });
     } else {
       this._productService.saveProduct(product).subscribe(() => {
-        this.toastr.success(`Producto ${product.name} registrado con exito!`, 'Producto registrado');
+        this.toastr.success(
+          `Producto ${product.name} registrado con exito!`,
+          'Producto registrado'
+        );
         this.loading = false;
         this.router.navigate(['/dashboard']);
-      })
+      });
     }
   }
 }
-

@@ -8,9 +8,10 @@ import { DialogComponent } from './dialog/dialog.component';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+<<<<<<< HEAD
   usersList: User[] = [
     { name: "Luis1", email: "luis1@gmail.com", password: "" },
     { name: "Luis2", email: "luis2@gmail.com", password: "" },
@@ -20,6 +21,7 @@ export class DashboardComponent implements OnInit {
     { name: "Luis6", email: "luis6@gmail.com", password: "" },
     { name: "Luis7", email: "luis7@gmail.com", password: "" },
   ];
+
   loading: boolean = false;
 
   constructor(private _userService: UserService, private toastr: ToastrService,
@@ -64,19 +66,22 @@ export class DashboardComponent implements OnInit {
 
   /*
   getProducts() {
-      this.loading = true;
-      this._productService.getProducts().subscribe((data: Product[]) => {
+    this.loading = true;
+    this._productService.getProducts().subscribe((data: Product[]) => {
       this.listProduct = data;
       this.loading = false;
-    })
+    });
   }
 
   deleteProduct(id: number) {
-      this.loading = true;
-      this._productService.deleteProduct(id).subscribe(() => {
+    this.loading = true;
+    this._productService.deleteProduct(id).subscribe(() => {
       this.getProducts();
-      this.toastr.warning('Producto eliminado con exito!', 'Producto eliminado');
-    })
+      this.toastr.warning(
+        'Producto eliminado con exito!',
+        'Producto eliminado'
+      );
+    });
   }
   */
 }
