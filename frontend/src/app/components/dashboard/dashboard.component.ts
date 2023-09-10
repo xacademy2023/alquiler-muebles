@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Product } from '../../interfaces/products';
-import { ProductService } from '../../services/product.service';
-
-type User = {
-  name: string;
-  email: string;
-  isSeller: boolean;
-}
+import { UserService } from '../../services/user.service';
+import { User } from '../../interfaces/user';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,32 +12,54 @@ type User = {
 })
 export class DashboardComponent implements OnInit {
   usersList: User[] = [
-    { name: "Luis1", email: "luis1@gmail.com", isSeller: false },
-    { name: "Luis2", email: "luis2@gmail.com", isSeller: true },
-    { name: "Luis3", email: "luis3@gmail.com", isSeller: true },
-    { name: "Luis4", email: "luis4@gmail.com", isSeller: false },
-    { name: "Luis5", email: "luis5@gmail.com", isSeller: true },
+    { name: "Luis1", email: "luis1@gmail.com", password: "" },
+    { name: "Luis2", email: "luis2@gmail.com", password: "" },
+    { name: "Luis3", email: "luis3@gmail.com", password: "" },
+    { name: "Luis4", email: "luis4@gmail.com", password: "" },
+    { name: "Luis5", email: "luis5@gmail.com", password: "" },
+    { name: "Luis6", email: "luis6@gmail.com", password: "" },
+    { name: "Luis7", email: "luis7@gmail.com", password: "" },
   ];
-  //listProduct: Product[] = []
   loading: boolean = false;
 
-  constructor(private _productService: ProductService, private toastr: ToastrService) { }
+  constructor(private _userService: UserService, private toastr: ToastrService,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    //this.getProducts();
-    this.getUsers();
+    this.getAllUsers();
   }
 
-  getUsers(): void {
+  getAllUsers(): void {
+    /*
+    this.loading = true;
+    this._adminService.getAllUsers().subscribe((data: User[]) => {
+      this.usersList = data;
+      this.loading = false;
+    });
+    */
+  }
+
+  getUser(email: string): void {
 
   }
 
   deleteUser(email: string): void {
-
+    this.loading = true;
+    this._adminService.deleteUser(email).subscribe(() => {
+      this.getAllUsers();
+      this.toastr.warning(`Usuario (${email}) eliminado con exito!`, 'Usuario eliminado');
+      this.loading = false;
+    });
   }
 
-  setSellerState(user: User, isSeller: boolean): void {
-    user.isSeller = isSeller;
+  /*
+  setUserSellerState(email: string, isSeller: boolean): void {
+    this.getUser(email)
+  }
+  */
+
+  openDialog(): void {
+    this.dialog.open(DialogComponent);
   }
 
   /*

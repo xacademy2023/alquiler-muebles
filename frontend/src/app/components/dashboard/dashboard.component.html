@@ -1,6 +1,6 @@
 <!-- <app-layout></app-layout> -->
-<app-progress-bar *ngIf="loading"></app-progress-bar>
 <!--
+<app-progress-bar *ngIf="loading"></app-progress-bar>
 <div *ngIf="!loading" class="container mt-2 text-center">
 -->
 <div class="container mt-2 text-center">
@@ -31,10 +31,10 @@
         <td>
           <button mat-button *ngIf="user.isSeller === false"
                   style="border-radius: 5px; background-color: rgb(100, 200, 240);"
-                  (click)="setSellerState(user, true)">Permitir Vendedor</button>
+                  (click)="openDialog()">Permitir Vendedor</button>
           <button mat-button *ngIf="user.isSeller === true"
                   style="border-radius: 5px; background-color: rgb(255, 200, 0);"
-                  (click)="setSellerState(user, false)">Revocar Vendedor</button>
+                  (click)="openDialog()">Revocar Vendedor</button>
           <!--
           <button
             routerLink="/edit/{{ item.id }}"
@@ -54,7 +54,7 @@
         </td>
         <td>
           <button mat-button style="border-radius: 30px; background-color: rgb(210, 0, 0); color: white;"
-                  (click)="deleteUser(user.email)">Eliminar Usuario</button>
+                  (click)="openDialog()">Eliminar Usuario</button>
         </td>
       </tr>
     </tbody>
