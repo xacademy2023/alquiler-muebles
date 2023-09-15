@@ -5,83 +5,73 @@ import { User } from '../../interfaces/user';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-<<<<<<< HEAD
+/*
   usersList: User[] = [
-    { name: "Luis1", email: "luis1@gmail.com", password: "" },
-    { name: "Luis2", email: "luis2@gmail.com", password: "" },
-    { name: "Luis3", email: "luis3@gmail.com", password: "" },
-    { name: "Luis4", email: "luis4@gmail.com", password: "" },
-    { name: "Luis5", email: "luis5@gmail.com", password: "" },
-    { name: "Luis6", email: "luis6@gmail.com", password: "" },
-    { name: "Luis7", email: "luis7@gmail.com", password: "" },
+    { id: 1, name: "Luis1", email: "luis1@gmail.com", password: "", role: "comprador" },
+    { id: 2, name: "Luis1", email: "luis1@gmail.com", password: "", role: "vendedor" },
+    { id: 3, name: "Luis1", email: "luis1@gmail.com", password: "", role: "vendedor" },
+    { id: 4, name: "Luis1", email: "luis1@gmail.com", password: "", role: "comprador" },
+    { id: 5, name: "Luis1", email: "luis1@gmail.com", password: "", role: "comprador" },
   ];
-
+*/
+  usersList: User[] = [];
   loading: boolean = false;
 
-  constructor(private _userService: UserService, private toastr: ToastrService,
-              private dialog: MatDialog) { }
+  constructor(
+    private _userService: UserService,
+    private toastr: ToastrService,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getAllUsers();
   }
 
   getAllUsers(): void {
-    /*
+
     this.loading = true;
-    this._adminService.getAllUsers().subscribe((data: User[]) => {
+    this._userService.getAllUsers().subscribe((data: User[]) => {
       this.usersList = data;
       this.loading = false;
     });
-    */
-  }
-
-  getUser(email: string): void {
 
   }
 
-  deleteUser(email: string): void {
+  deleteUser(userId: number): void {
     this.loading = true;
-    this._adminService.deleteUser(email).subscribe(() => {
+    this._userService.deleteUser(userId).subscribe(() => {
       this.getAllUsers();
-      this.toastr.warning(`Usuario (${email}) eliminado con exito!`, 'Usuario eliminado');
+      this.toastr.warning(`Usuario (${userId}) eliminado con exito!`, 'Usuario eliminado');
       this.loading = false;
     });
   }
 
-  /*
-  setUserSellerState(email: string, isSeller: boolean): void {
-    this.getUser(email)
-  }
-  */
-
-  openDialog(): void {
-    this.dialog.open(DialogComponent);
-  }
-
-  /*
-  getProducts() {
+  updateUserRole(userId: number, newRole: string): void {
     this.loading = true;
-    this._productService.getProducts().subscribe((data: Product[]) => {
-      this.listProduct = data;
+    this._userService.updateUser(userId, newRole).subscribe(() => {
+      this.getAllUsers();
+      this.toastr.warning(`Usuario (${userId}) actualizado con exito!`, 'Usuario actualizado');
       this.loading = false;
-    });
+    });    
   }
 
-  deleteProduct(id: number) {
-    this.loading = true;
-    this._productService.deleteProduct(id).subscribe(() => {
-      this.getProducts();
-      this.toastr.warning(
-        'Producto eliminado con exito!',
-        'Producto eliminado'
-      );
+  openDeleteUserDialog(user: User): void {
+    let dialogRef = this.dialog.open(DialogComponent, { 
+      width: "40%", height: "30%",
+      data: {
+        userId: user.id, userName: user.name, userEmail: user.email
+      }
+    }); 
+    dialogRef.afterClosed().subscribe((result: number) => {
+      if(typeof result === "number") {
+        this.deleteUser(result);
+      }
     });
   }
-  */
 }

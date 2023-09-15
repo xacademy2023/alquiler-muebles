@@ -1,1 +1,17 @@
-<p>dialog works!</p>
+<div class="container">
+  <h2 mat-dialog-title>
+    Eliminar al usuario: {{ dashboardData.userName }}
+  </h2>
+  <h3 mat-dialog-subtitle>
+    Correo: {{ dashboardData.userEmail }}<br>
+    ID: {{ dashboardData.userId }}
+  </h3>
+  <mat-dialog-actions style="margin: auto; background-color: rgb(230, 240, 240);">
+    <button mat-button mat-dialog-close style="margin-right: 4rem;">
+      Cancelar
+    </button>
+    <button mat-button (click)="deleteUser()">
+      Aceptar
+    </button>
+  </mat-dialog-actions>
+</div>

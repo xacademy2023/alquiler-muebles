@@ -3,13 +3,7 @@ import { environment } from 'src/environments/environment';
 import { User } from '../interfaces/user';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-/*
-export interface User {
-  name: string;
-  email: string;
-  isSeller: boolean;
-}
-*/
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,17 +28,15 @@ export class UserService {
     return this.http.get<User[]>(`${this.myAppUrl}${this.myApiUrl}`);
   }
 
-  getUser(email: string): Observable<User> {
-    return this.http.get<User>(`${this.myAppUrl}${this.myApiUrl}/${email}`);
+  getUser(userId: number): Observable<User> {
+    return this.http.get<User>(`${this.myAppUrl}${this.myApiUrl}/${userId}`);
   }
 
-  deleteUser(email: string): Observable<void> {
-    return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}/${email}`);
+  deleteUser(userId: number): Observable<void> {
+    return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}/${userId}`);
   }
 
-  /*
-  setUserSellerState(email: string, isSeller: boolean): Observable<void> {
-    return this.http.put<void>(`${this.myAppUrl}${this.myApiUrl}/${email}`, isSeller);
+  updateUser(userId: number, updatedUser: any): Observable<void> {
+    return this.http.put<void>(`${this.myAppUrl}${this.myApiUrl}/${userId}`, updatedUser);
   }
-  */
 }

@@ -1,60 +1,40 @@
 <!-- <app-layout></app-layout> -->
 <!--
+-->
 <app-progress-bar *ngIf="loading"></app-progress-bar>
 <div *ngIf="!loading" class="container mt-2 text-center">
--->
 <div class="container mt-2 text-center">
   <div class="title">
     <h2>Usuarios</h2>
-    <!--
-    <button type="button" class="button" routerLink="/add">
-      Agregar Producto
-    </button>
-    -->
   </div>
 
   <table *ngIf="usersList.length > 0" class="table">
     <thead>
       <tr>
+        <th scope="col">Id</th>
         <th scope="col">Nombre</th>
         <th scope="col">Email</th>
-        <th scope="col">Estado</th>
-        <th scope="col">Permiso</th>
+        <th scope="col">Rol</th>
+        <th scope="col">Opciones</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let user of usersList">
+        <td>{{ user.id }}</td>
         <td>{{ user.name }}</td>
         <td>{{ user.email}}</td>
-        <td *ngIf="user.isSeller === false">Comprador</td>
-        <td *ngIf="user.isSeller === true"><b>Vendedor</b></td>
+        <td>{{ user.role }}</td>
         <td>
-          <button mat-button *ngIf="user.isSeller === false"
+          <button mat-button *ngIf="user.role === 'comprador'"
                   style="border-radius: 5px; background-color: rgb(100, 200, 240);"
-                  (click)="openDialog()">Permitir Vendedor</button>
-          <button mat-button *ngIf="user.isSeller === true"
+                  (click)="updateUserRole(user.id, 'vendedor')">Cambiar Rol a Vendedor</button>
+          <button mat-button *ngIf="user.role === 'vendedor'"
                   style="border-radius: 5px; background-color: rgb(255, 200, 0);"
-                  (click)="openDialog()">Revocar Vendedor</button>
-          <!--
-          <button
-            routerLink="/edit/{{ item.id }}"
-            type="button"
-            class="btn btn-outline-success btn-sm"
-          >
-            Editar
-          </button>
-          <button
-            (click)="deleteProduct(item.id!)"
-            type="button"
-            class="btn btn-outline-danger btn-sm ms-2"
-          >
-            Eliminar
-          </button>
-          -->
+                  (click)="updateUserRole(user.id, 'comprador')">Cambiar Rol a Comprador</button>
         </td>
         <td>
           <button mat-button style="border-radius: 30px; background-color: rgb(210, 0, 0); color: white;"
-                  (click)="openDialog()">Eliminar Usuario</button>
+                  (click)="openDeleteUserDialog(user)">Eliminar Usuario</button>
         </td>
       </tr>
     </tbody>

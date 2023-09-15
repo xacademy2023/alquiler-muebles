@@ -12,9 +12,11 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  id: number = 0;
   name: string = '';
   email: string = '';
   password: string = '';
+  role: string = 'comprador';
   loading: boolean = false;
 
   constructor(
@@ -38,9 +40,11 @@ export class LoginComponent implements OnInit {
     }
 
     const user: User = {
+      id: this.id,
       name: this.name,
       email: this.email,
       password: this.password,
+      role: this.role
     };
 
     this.loading = true;
