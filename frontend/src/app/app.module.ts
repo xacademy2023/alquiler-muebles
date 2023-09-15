@@ -39,7 +39,6 @@ import { HomeComponent } from './components/home/home.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { DetailsProdComponent } from './components/details-prod/details-prod.component';
 import { HeaderComponent } from './components/header/header.component';
-import { LayoutComponent } from './components/layout/layout.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DialogComponent } from './components/dashboard/dialog/dialog.component';
 @NgModule({
@@ -56,7 +55,6 @@ import { DialogComponent } from './components/dashboard/dialog/dialog.component'
     DetailComponent,
     DetailsProdComponent,
     HeaderComponent,
-    LayoutComponent,
     FooterComponent,
     DialogComponent,
   ],
@@ -89,8 +87,8 @@ import { DialogComponent } from './components/dashboard/dialog/dialog.component'
     }),
   ],
   providers: [
-  { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

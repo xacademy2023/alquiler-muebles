@@ -11,7 +11,7 @@ import { DetailsProdComponent } from './components/details-prod/details-prod.com
 // Guards
 import { authGuard } from './utils/auth.guard';
 import { HomeComponent } from './components/home/home.component';
-import { LayoutComponent } from './components/layout/layout.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -34,8 +34,8 @@ const routes: Routes = [
   { path: 'detailsProd', component: DetailsProdComponent },
   {
     path: 'dashboard',
-    component: LayoutComponent,
-    //canActivate: [authGuard],
+    component: DashboardComponent,
+    canActivate: [authGuard],
     data: { role: 'vendedor' },
   },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
