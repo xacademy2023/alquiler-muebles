@@ -47,8 +47,17 @@ export const Product = sequelize.define(
         this.setDataValue("images", val.join(";"));
       },
     },
+    orderId:{
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: 0
+    }
   },
   {
     timestamps: false,
   }
 );
+
+
+
+

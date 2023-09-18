@@ -28,7 +28,7 @@ export const createUser = async (user: any) => {
 
 export const getAllUsers = async () => {
   try {
-    const users = await User.findAll();
+    const users = await User.findAll( {include: {all:true}});
     return users;
   } catch (error) {
     console.error("Error when fetching users", error);
@@ -37,7 +37,7 @@ export const getAllUsers = async () => {
 
 export const getUser = async (userId: string) => {
   try {
-    const user = await User.findByPk(userId);
+    const user = await User.findByPk(userId , {include: {all:true}});
     return user;
   } catch (error) {
     console.error("Error when fetching user", error);

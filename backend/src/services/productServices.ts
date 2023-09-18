@@ -2,7 +2,7 @@ import { Product } from "../models/product";
 
 export const getProducts = async () => {
   try {
-    const listProducts = await Product.findAll();
+    const listProducts = await Product.findAll( {include: {all:true}});
     return listProducts;
   } catch (error) {
     console.error("Error when fetching products", error);
@@ -39,7 +39,7 @@ export const createProduct = async (product: any) => {
 
 export const getProductId = async (id: string) => {
   try {
-    const product = await Product.findByPk(id);
+    const product = await Product.findByPk(id, {include: {all:true}});
     return product;
   } catch (error) {
     console.error("Error when fetching product", error);
