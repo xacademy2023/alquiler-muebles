@@ -32,12 +32,12 @@
         <td>{{ item.shortDescription }}</td>
         <td>{{ item.price | currency }}</td>
         <td><img src="{{ item.coverImage }}" alt="imagen" /></td>
-        <td>{{ item.stock }}</td>
+        <td>{{ item.stock }} unidades</td>
         <td>
           <button
             routerLink="/edit/{{ item.id }}"
             type="button"
-            class="btn btn-outline-success btn-sm"
+            class="btn btn-outline-success btn-sm ms-2"
           >
             Editar
           </button>

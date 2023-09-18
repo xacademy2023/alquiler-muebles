@@ -1,29 +1,17 @@
 <app-header></app-header>
 <app-progress-bar *ngIf="loading"></app-progress-bar>
 
-<div *ngIf="!loading" class="container align-center">
-  <!--
-<div class="container row row-cols-1 row-cols-md-2 g-4">
--->
-  <div
-    *ngFor="let item of listProduct"
-    class="card mb-4 card-size center-elements"
-  >
-    <!--
-    <div class="row g-0">
-      <div class="col-md-8">
-        <div class="card-body">
-          <div class="col-md-4">
-          </div>
-  -->
-    <img
+<div *ngIf="!loading" class="container">
+  <div *ngFor="let item of listProduct" class="card">
+    <div class="card-details">
+      <img
       src="{{ item.coverImage }}"
-      class="img-fluid rounded-start"
-      style="max-width: 150px; height: 150px"
+      
+      
     />
-    <h4 class="card-title">{{ item.name }}</h4>
-    <h6 class="card-text">{{ item.shortDescription }}</h6>
-    <h5 class="card-text">{{ item.price | currency }}</h5>
+    <h4 class="h4">{{ item.name }}</h4>
+    <h6 class="h6">{{ item.shortDescription }}</h6>
+    <h5 class="h5">{{ item.price | currency }}</h5>
     <button
       type="button"
       class="card-button"
@@ -31,11 +19,16 @@
     >
       Ver detalle...
     </button>
-    <!--      
-        </div>
-      </div>
-    </div>
-  --></div>
+  </div>
+  </div>
 </div>
 
-<app-footer></app-footer>
+<app-footer class="footer"></app-footer>
+
+
+
+
+
+
+
+
