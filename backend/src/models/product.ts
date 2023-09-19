@@ -10,7 +10,7 @@ export const Product = sequelize.define(
       autoIncrement: true,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(),
       allowNull: false,
     },
     shortDescription: {
@@ -37,15 +37,17 @@ export const Product = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    images: {
+    images1: {
       type: DataTypes.STRING,
       allowNull: false,
-      get() {
-        return this.getDataValue("images").split(";");
-      },
-      set(val: []) {
-        this.setDataValue("images", val.join(";"));
-      },
+    },
+    images2: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    images3: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
   },
   {
