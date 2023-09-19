@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
       next: (token) => {
         localStorage.setItem('token', token);
         redirect(this.router);
+        window.location.reload();
       },
       error: (e: HttpErrorResponse) => {
         this._errorService.msjError(e);
