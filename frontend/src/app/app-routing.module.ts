@@ -31,7 +31,7 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'signIn', component: SignInComponent },
-  { path: 'detailsProd', component: DetailsProdComponent },
+  { path: 'detailsProd/:id', component: DetailsProdComponent },
   {
     path: 'dashboard',
     component: DashboardComponent,
