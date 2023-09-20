@@ -7,5 +7,7 @@ export interface Product {
   stock: number;
   category: string;
   coverImage: string;
-  images: string[];
+  images1: string;
+  images2: string;
+  images3: string;
 }

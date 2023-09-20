@@ -25,5 +25,6 @@ export class HeaderComponent implements OnInit {
   logout() {
     localStorage.removeItem('token');
     this.isLogged = false;
+    window.location.reload();
   }
 }
