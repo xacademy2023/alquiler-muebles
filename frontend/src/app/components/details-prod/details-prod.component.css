@@ -11,8 +11,8 @@ p{
 }
 .container-detailsProd{
   margin-top:60px;
-  width:80%;
-  height:700px;
+  width:87%;
+  height:650px;
   display:flex;
   margin: 0 auto;
   margin-left:40px;
@@ -23,9 +23,12 @@ p{
   position:relative;
 
 }
+.container-carousel{
+  width:40%;
+}
 .text-details{
   flex:right;
-  width:50%;
+  width:27%;
   height:85%;
 }
 .mini-target, .mini-target-1, .mini-target-2{
@@ -39,11 +42,18 @@ p{
   margin-right:10px;
 }
 .mini-target{
+  margin-top:10px;
   margin-left:30px;
+  width:200px;
 }
 .mini-target-2, .mini-target-1{
   margin-left:5px;
   margin-top:10px;
+}
+.text-price{
+  margin-left:30px;
+  font-size: 36px;
+  margin-top: 20px;
 }
 .icon_1{
   border-radius:50%;
@@ -61,9 +71,15 @@ p{
   margin-bottom:25px;
   margin-left:5px;
 }
+span{
+  margin-left:0px;
+}
 .text-detalle{
-  margin-top:40px;
+  margin-top:80px;
   margin-left:30px;
+}
+.text-detalle-1{
+  margin-top:10px;
 }
 .text-target{
   width:50%;
@@ -79,9 +95,18 @@ p{
   margin-top:40px;
   margin-left:30px;
 }
-.text-description-1{
+.text-description-1, .text-description-2{
   margin-left:30px;
   margin-right:50px;
+}
+.text-description-1{
+  margin-top:30px;
+}
+.text-description-2{
+  margin-top:40px;
+}
+ul{
+  margin-top:40px;
 }
 .list-detalles, .list-detalles_1{
   list-style: none;
@@ -128,11 +153,39 @@ height: 400px;
 #boton-lateral span{
   background-color:rgb(203, 205, 208)
 }
-/*Comentarios*/
-.buttons-coment{
-  margin-bottom:0px;
-  position:absolute;
-  background:rgb(112, 136, 112);
-  width:100%;
-  height:20px;
+/*Div botones*/
+.botones{
+  margin-top:50px;
+  margin-right:20px;
+  border: 1px solid rgb(214, 210, 210);
+  border-radius:5px;
+  height:430px;
+  width:400px;
+}
+.envio{
+  display:block;
+  margin-top:50px;
+  margin-left:40px;
+  width: 170px;
+  height: 40px;
+  background-color:rgb(89, 19, 89);
+  color:white;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding:10px 20px;
+}
+.cant-selection, #cantidad-select, .cant-selection-1{
+  margin-top:50px;
+  display:inline-block;
+}
+.cant-selection-1{
+  margin-left:5px;
+}
+#text-cantidad{
+  margin-right:5px;
+  margin-left:30px;
+  margin-top:20px;
+}
+button:hover{
+  color: rgb(236, 126, 240);
 }
