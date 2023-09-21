@@ -12,6 +12,7 @@ import { DetailsProdComponent } from './components/details-prod/details-prod.com
 import { authGuard } from './utils/auth.guard';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -37,6 +38,12 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [authGuard],
     data: { role: 'vendedor' },
+  },
+  {
+    path: 'adminDashboard',
+    component: AdminDashboardComponent,
+    canActivate: [authGuard],
+    data: { role: 'admin' },
   },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];

@@ -13,10 +13,12 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
+  id: number = 0;
   name: string = '';
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
+  role: string = 'comprador';
   loading: boolean = false;
   
   constructor(private toastr: ToastrService,
@@ -39,9 +41,11 @@ export class SignInComponent implements OnInit {
     }
 
     const user: User = {
+      id: this.id,
       name: this.name,
       email: this.email,
-      password: this.password
+      password: this.password,
+      role: this.role
     }
 
     this.loading = true;

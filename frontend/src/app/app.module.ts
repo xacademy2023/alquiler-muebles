@@ -40,6 +40,8 @@ import { DetailComponent } from './components/detail/detail.component';
 import { DetailsProdComponent } from './components/details-prod/details-prod.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { DialogComponent } from './components/admin-dashboard/dialog/dialog.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +57,8 @@ import { FooterComponent } from './components/footer/footer.component';
     DetailsProdComponent,
     HeaderComponent,
     FooterComponent,
+    DialogComponent,
+    AdminDashboardComponent,
   ],
   imports: [
     BrowserModule,
