@@ -30,6 +30,10 @@ export class CrudComponent implements OnInit {
       price: [null, Validators.required],
       coverImage: ['', Validators.required],
       stock: [null, Validators.required],
+      description: ['', Validators.required],
+      images1: ['', Validators.required],
+      images2: ['', Validators.required],
+      images3: ['', Validators.required],
     });
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
   }
@@ -52,6 +56,10 @@ export class CrudComponent implements OnInit {
         price: product.price,
         coverImage: product.coverImage,
         stock: product.stock,
+        description: product.description,
+        images1: product.images1,
+        images2: product.images2,
+        images3: product.images3,
       });
     });
   }
@@ -65,7 +73,9 @@ export class CrudComponent implements OnInit {
       coverImage: this.form.value.coverImage,
       stock: this.form.value.stock,
       description: '',
-      images: [],
+      images1: this.form.value.images1,
+      images2: this.form.value.images2,
+      images3: this.form.value.images3,
     };
 
     this.loading = true;

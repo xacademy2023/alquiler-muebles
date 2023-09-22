@@ -18,7 +18,9 @@ export const createProduct = async (product: any) => {
     stock,
     category,
     coverImage,
-    images,
+    images1,
+    images2,
+    images3,
   } = product;
   try {
     const newProduct = await Product.create({
@@ -29,7 +31,9 @@ export const createProduct = async (product: any) => {
       stock,
       category,
       coverImage,
-      images,
+      images1,
+      images2,
+      images3,
     });
     return newProduct;
   } catch (error) {

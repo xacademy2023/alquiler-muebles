@@ -37,15 +37,17 @@ export const Product = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    images: {
-      type: DataTypes.STRING(1500),
+    images1: {
+      type: DataTypes.STRING,
       allowNull: false,
-      get() {
-        return this.getDataValue("images").split(";");
-      },
-      set(val: []) {
-        this.setDataValue("images", val.join(";"));
-      },
+    },
+    images2: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    images3: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     orderId:{
       type: DataTypes.INTEGER,

@@ -1,8 +1,6 @@
 <!-- <app-layout></app-layout> -->
 <app-progress-bar *ngIf="loading"></app-progress-bar>
-<!--
 <div *ngIf="!loading" class="container mt-2 text-center">
--->
 <div class="container mt-2 text-center">
   <div class="title">
     <h2>Productos</h2>
@@ -32,20 +30,14 @@
         <td>{{ item.shortDescription }}</td>
         <td>{{ item.price | currency }}</td>
         <td><img src="{{ item.coverImage }}" alt="imagen" /></td>
-        <td>{{ item.stock }}</td>
+        <td>{{ item.stock }} unidades</td>
         <td>
-          <button
-            routerLink="/edit/{{ item.id }}"
-            type="button"
-            class="btn btn-outline-success btn-sm"
-          >
+          <button routerLink="/edit/{{ item.id }}" type="button"
+            class="btn btn-outline-success btn-sm ms-2">
             Editar
           </button>
-          <button
-            (click)="deleteProduct(item.id!)"
-            type="button"
-            class="btn btn-outline-danger btn-sm ms-2"
-          >
+          <button (click)="deleteProduct(item.id!)" type="button"
+            class="btn btn-outline-danger btn-sm ms-2">
             Eliminar
           </button>
         </td>

@@ -11,7 +11,8 @@ import { DetailsProdComponent } from './components/details-prod/details-prod.com
 // Guards
 import { authGuard } from './utils/auth.guard';
 import { HomeComponent } from './components/home/home.component';
-import { LayoutComponent } from './components/layout/layout.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -31,12 +32,18 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'signIn', component: SignInComponent },
-  { path: 'detailsProd', component: DetailsProdComponent },
+  { path: 'detailsProd/:id', component: DetailsProdComponent },
   {
     path: 'dashboard',
-    component: LayoutComponent,
+    component: DashboardComponent,
     canActivate: [authGuard],
     data: { role: 'vendedor' },
+  },
+  {
+    path: 'adminDashboard',
+    component: AdminDashboardComponent,
+    canActivate: [authGuard],
+    data: { role: 'admin' },
   },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
