@@ -17,12 +17,9 @@ export const Order = sequelize.define(
     products: {
       type: DataTypes.STRING(1500),
       allowNull: false,
-      get() {
-        return this.getDataValue("products").split(";");
-      },
-      set(val: []) {
-        this.setDataValue("products", val.join(";"));
-      },
+        set(val) {
+          this.setDataValue("products", JSON.stringify(val ?? ""));
+        },
     },
     totalPrice: {
       type: DataTypes.DECIMAL,

@@ -28,7 +28,7 @@ export const createUser = async (user: any) => {
 
 export const getAllUsers = async () => {
   try {
-    const users = await User.findAll( {include: {all:true}});
+    const users = await User.findAll({include: {all:true}} );
     return users;
   } catch (error) {
     console.error("Error when fetching users", error);

@@ -17,11 +17,13 @@ export const createOrder = async (order: any) => {
     totalQuantity
     
   } = order;
-const list = JSON.stringify
+
+
   try {
+  
     const newOrder = await Order.create({
       userId,
-      products,
+     products,
       totalPrice,
       totalQuantity
       
