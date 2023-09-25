@@ -52,8 +52,25 @@ export const loginUser = async (req: Request, res: Response) => {
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
     const users = await userService.getAllUsers();
-    res.json(users);
+    const newList = users?.map((user) => {
+      const userId = user?.dataValues.id;
+      const name = user?.dataValues.name;
+      const orders = user?.dataValues.orders.map((order: any) => {
+        const orderId = order?.dataValues.id;
+        const products = JSON?.parse(order?.dataValues?.products);
+        const totalPrice = order?.dataValues.totalPrice;
+        const totalQuantity = order?.dataValues.totalQuantity;
+        const newOrder = { orderId, products, totalPrice, totalQuantity };
+        return newOrder;
+      });
+
+      const newUser = { userId, name, orders };
+      return newUser;
+    });
+    console.log(newList);
+    res.json(newList);
   } catch (error: any) {
+    console.error(error);
     res.status(500).json({ action: "getAllUsers", error: error.message });
   }
 };
@@ -66,7 +83,21 @@ export const getUser = async (req: Request, res: Response) => {
         .status(404)
         .json({ action: "getUser", error: "error when fetching user" });
     } else {
-      res.json(user);
+      const id = user.dataValues.id;
+      const name = user.dataValues.name;
+      const email = user.dataValues.email;
+      const ordersList = user.dataValues.orders;
+      const orders: any = ordersList.map((order: any) => {
+        const orderId = order.dataValues.id;
+        const products = JSON.parse(order.dataValues.products);
+        const totalPrice = order.dataValues.totalPrice;
+        const totalQuantity = order.dataValues.totalQuantity;
+        const newOrder = { orderId, products, totalPrice, totalQuantity };
+        return newOrder;
+      });
+      const newUser = { id, name, email, orders };
+
+      res.json(newUser);
     }
   } catch (error: any) {
     res.status(500).json({ action: "getUser", error: error.message });
