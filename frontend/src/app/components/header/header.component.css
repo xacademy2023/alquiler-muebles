@@ -1,4 +1,4 @@
-header {
+/* header {
   margin-bottom: 5rem;
 }
 
@@ -8,7 +8,6 @@ header {
 }
 .header-principal {
   background-color: rgb(241, 237, 237);
-  /*background-image: url('imagenes/fondo-madera-natural.jpg');*/
 }
 .img-logo {
   width: 150px;
@@ -45,7 +44,7 @@ header {
   gap: 1rem;
   cursor: pointer;
 }
-/**carrito**/
+
 .hidden-cart {
   display: none;
 }
@@ -152,7 +151,6 @@ header {
 .number-carrito {
   margin-right: 10px;
 }
-/***/
 
 #usuario,
 #cesta,
@@ -197,7 +195,6 @@ header {
 }
 .container-navbar {
   background-color: rgb(114, 74, 114);
-  /*background-color:rgb(109, 161, 113);*/
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -238,7 +235,6 @@ li {
   border: 2px solid white;
   border-radius: 2rem;
   background-color: rgb(241, 237, 237);
-  /*background-color:rgb(233, 206, 206);*/
   height: 3.4rem;
   overflow: hidden;
 }
@@ -248,8 +244,6 @@ li {
   border: none;
   width: 25rem;
   background-color: rgb(241, 237, 237);
-  /*background-color:rgb(233, 206, 206);*/
-  /*rgb(172, 139, 109)*/
   font-size: 1.1rem;
   padding: 0 2rem;
   color: rgb(58, 78, 58);
@@ -266,4 +260,68 @@ li {
 }
 .btn-search i {
   font-size: 1.5rem;
+} */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding: 0.5rem 4rem;
+  background-color: #724a72;
+  color: #fff;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.img-logo {
+  height: 90px;
+  border-radius: 50%;
+  margin-right: 50px;
+}
+
+li,
+li a {
+  list-style: none;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.container-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.user {
+  font-size: 2rem;
+  color: #fff;
+  cursor: auto;
+  padding-left: 1rem;
+}
+
+.login-btn {
+  color: #fff;
+  background-color: #5e165ef6;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0.7rem 0.5rem;
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+.cart-icon {
+  font-size: 2rem;
+  padding-left: 1rem;
+}
+
+.cart-icon:hover {
+  color: #5e165ef6;
 }

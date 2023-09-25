@@ -1,11 +1,11 @@
-<app-progress-bar *ngIf="loading"></app-progress-bar>
-<app-navbar></app-navbar>
+<app-spinner *ngIf="loading"></app-spinner>
 <div *ngIf="!loading" class="row mt-1">
   <div class="col-lg-4 offset-lg-4">
     <div class="card text-white bg-secondary" style="width: 25rem">
       <div class="card-header text-center">{{ operacion }}Producto</div>
       <div class="card-body">
-        <form class="text-center" [formGroup]="form" (ngSubmit)="addProduct()">Ingrese Categoria
+        <form class="text-center" [formGroup]="form" (ngSubmit)="addProduct()">
+          Ingrese Categoria
           <select
             formControlName="category"
             type="text"
