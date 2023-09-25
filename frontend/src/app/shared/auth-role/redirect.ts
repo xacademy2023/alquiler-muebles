@@ -9,7 +9,7 @@ export const redirect = (router: Router) => {
     router.navigate(['/home']);
     return;
   } else if (authRole(['admin'])) {
-    router.navigate(['/dashboard']);
+    router.navigate(['/adminDashboard']);
     return;
   }
 };

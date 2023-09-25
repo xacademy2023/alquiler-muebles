@@ -1,4 +1,4 @@
-<app-progress-bar *ngIf="loading"></app-progress-bar>
+<app-spinner *ngIf="loading"></app-spinner>
 <!--
 <div *ngIf="!loading" class="container mt-2 text-center">
 -->
@@ -17,24 +17,40 @@
       </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let user of usersList">
-      <td>{{ user.id }}</td>
+      <tr *ngFor="let user of usersList">
+        <td>{{ user.id }}</td>
         <td>{{ user.name }}</td>
-        <td>{{ user.email}}</td>
+        <td>{{ user.email }}</td>
         <td>{{ user.role }}</td>
         <td>
-          <button mat-button *ngIf="user.role === 'comprador'"
-                  style="border-radius: 5px; background-color: rgb(100, 200, 240);"
-                  (click)="updateUserRole(user.id, 'vendedor')">Cambiar Rol a Vendedor
+          <button
+            mat-button
+            *ngIf="user.role === 'comprador'"
+            style="border-radius: 5px; background-color: rgb(100, 200, 240)"
+            (click)="updateUserRole(user.id, 'vendedor')"
+          >
+            Cambiar Rol a Vendedor
           </button>
-          <button mat-button *ngIf="user.role === 'vendedor'"
-                  style="border-radius: 5px; background-color: rgb(255, 200, 0);"
-                  (click)="updateUserRole(user.id, 'comprador')">Cambiar Rol a Comprador
+          <button
+            mat-button
+            *ngIf="user.role === 'vendedor'"
+            style="border-radius: 5px; background-color: rgb(255, 200, 0)"
+            (click)="updateUserRole(user.id, 'comprador')"
+          >
+            Cambiar Rol a Comprador
           </button>
         </td>
         <td>
-          <button mat-button style="border-radius: 30px; background-color: rgb(210, 0, 0); color: white;"
-                    (click)="openDeleteUserDialog(user)">Eliminar Usuario
+          <button
+            mat-button
+            style="
+              border-radius: 30px;
+              background-color: rgb(210, 0, 0);
+              color: white;
+            "
+            (click)="openDeleteUserDialog(user)"
+          >
+            Eliminar Usuario
           </button>
         </td>
       </tr>

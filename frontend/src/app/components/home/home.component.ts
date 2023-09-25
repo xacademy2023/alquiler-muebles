@@ -10,15 +10,6 @@ import { ProductService } from '../../services/product.service';
 })
 export class HomeComponent implements OnInit {
   listProduct: Product[] = [];
-  /*
-  listProduct: Product[] = [
-    { id: 1, name: "silla 1", shortDescription: "esta es una silla", description: "esta es una silla de buena calidad", price: 100, stock: 1, category: "silla", coverImage: "../../../assets/img/blue_chair.jpg", images: [] },
-    { id: 1, name: "silla 1", shortDescription: "esta es una silla", description: "esta es una silla de buena calidad", price: 100, stock: 1, category: "silla", coverImage: "../../../assets/img/blue_chair.jpg", images: [] },
-    { id: 1, name: "silla 1", shortDescription: "esta es una silla", description: "esta es una silla de buena calidad", price: 100, stock: 1, category: "silla", coverImage: "../../../assets/img/blue_chair.jpg", images: [] },
-    { id: 1, name: "silla 1", shortDescription: "esta es una silla", description: "esta es una silla de buena calidad", price: 100, stock: 1, category: "silla", coverImage: "../../../assets/img/blue_chair.jpg", images: [] },
-    { id: 1, name: "silla 1", shortDescription: "esta es una silla", description: "esta es una silla de buena calidad", price: 100, stock: 1, category: "silla", coverImage: "../../../assets/img/blue_chair.jpg", images: [] },
-  ];
-  */
   loading: boolean = false;
 
   constructor(
