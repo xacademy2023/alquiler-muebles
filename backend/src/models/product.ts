@@ -49,11 +49,6 @@ export const Product = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    orderId:{
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      defaultValue: 0
-    }
   },
   {
     timestamps: false,
