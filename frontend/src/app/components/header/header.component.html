@@ -88,6 +88,10 @@
       Cerrar sesión
     </button>
 
-    <i *ngIf="isLogged" class="fa-solid fa-basket-shopping cart-icon"></i>
+    <i
+      *ngIf="isLogged"
+      class="fa-solid fa-basket-shopping cart-icon"
+      routerLink="/cart"
+    ></i>
   </div>
 </header>

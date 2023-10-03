@@ -42,6 +42,7 @@ export const loginUser = async (req: Request, res: Response) => {
     {
       email: email,
       role: user.role,
+      userId: user.id,
     },
     process.env.SECRET_KEY || "secret"
   );

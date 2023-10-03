@@ -6,6 +6,8 @@ export const authRole = (role: string[]) => {
   if (token) {
     const decodedToken: any = jwt_decode(token);
     const userRoles = decodedToken.role;
+    const userId = decodedToken.userId;
+    console.log(userId);
 
     if (userRoles.includes(role)) {
       return true;
