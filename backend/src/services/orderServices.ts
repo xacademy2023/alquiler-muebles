@@ -1,4 +1,5 @@
-import { Order } from "../models/order";
+import { orderControlller } from "../controllers";
+import { Order, ProductOrder } from "../models";
 
 export const getOrders = async () => {
   try {
@@ -9,25 +10,22 @@ export const getOrders = async () => {
   }
 };
 
-export const createOrder = async (order: any) => {
-  const {
-    userId,
-    products,
-    totalPrice,
-    totalQuantity
-    
-  } = order;
+export const getOrderInProgress = async () => {
+  try {
+    const orderInProgress = await Order.findOne({where:{ status: "inProgress"}});
+    return orderInProgress;
+  } catch (error) {
+    console.error("Error when fetching orders inProgress", error);
+  }
+};
 
+export const createOrder = async (userId: any) => {
 
   try {
-  
     const newOrder = await Order.create({
-      userId,
-     products,
-      totalPrice,
-      totalQuantity
-      
+      userId
     });
+
     return newOrder;
   } catch (error) {
     console.error("Error when creating order", error);
