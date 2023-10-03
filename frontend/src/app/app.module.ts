@@ -42,6 +42,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DialogComponent } from './components/admin-dashboard/dialog/dialog.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { OrdersPanelComponent } from './components/orders-panel/orders-panel.component';
+import { OrderDialogComponent } from './components/orders-panel/order-dialog/order-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +61,8 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     FooterComponent,
     DialogComponent,
     AdminDashboardComponent,
+    OrdersPanelComponent,
+    OrderDialogComponent,
   ],
   imports: [
     BrowserModule,

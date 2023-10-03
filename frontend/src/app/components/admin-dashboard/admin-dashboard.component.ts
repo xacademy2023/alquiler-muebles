@@ -34,13 +34,11 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   getAllUsers(): void {
-
     this.loading = true;
     this._userService.getAllUsers().subscribe((data: User[]) => {
       this.usersList = data;
       this.loading = false;
     });
-
   }
 
   deleteUser(userId: number): void {

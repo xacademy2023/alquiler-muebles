@@ -1,0 +1,33 @@
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<!--
+<div *ngIf="!loading" class="container mt-2 text-center">
+-->
+<div class="container mt-2 text-center">
+  <div class="title">
+    <h2>Ordenes</h2>
+  </div>
+  <table *ngIf="ordersList.length > 0" class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Comprador</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of ordersList">
+      <td>{{ order.orderId }}</td>
+        <td>{{ order.userId }}</td>
+        <td>
+          <button mat-button style="border-radius: 5px; background-color: rgb(100, 200, 240);
+                  margin-right: 2rem;" (click)=" openAcceptOrderDialog(order)">Aceptar
+          </button>
+          <button mat-button style="border-radius: 5px; background-color: rgb(255, 200, 0);"
+                  (click)="openRejectOrderDialog(order)">Rechazar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 *ngIf="ordersList.length == 0">No hay ordenesordenes  disponibles</h5>
+</div>
