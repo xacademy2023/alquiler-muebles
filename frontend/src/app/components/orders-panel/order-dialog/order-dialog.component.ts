@@ -18,10 +18,10 @@ export class OrderDialogComponent implements OnInit {
   }
   
   rejectOrder(): void {
-    //this.ref.close(this.dashboardData.userId);
+    this.ref.close(this.dashboardData.order.orderId);
   }
 
   acceptOrder(): void {
-    //this.ref.close(this.dashboardData.userId);
+    this.ref.close(this.dashboardData.order);
   }
 }

@@ -1,6 +1,6 @@
 export interface Order {
-  orderId: number;
+  id: string;
   userId: number;
-  products: number[];
+  products: object[];
   status: string;
 }

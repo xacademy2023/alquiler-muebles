@@ -54,6 +54,7 @@ export const getAllUsers = async (req: Request, res: Response) => {
     const users = await userService.getAllUsers();
     res.json(users);
   } catch (error: any) {
+    console.error(error);
     res.status(500).json({ action: "getAllUsers", error: error.message });
   }
 };
@@ -66,6 +67,7 @@ export const getUser = async (req: Request, res: Response) => {
         .status(404)
         .json({ action: "getUser", error: "error when fetching user" });
     } else {
+
       res.json(user);
     }
   } catch (error: any) {

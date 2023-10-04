@@ -7,9 +7,9 @@ import { ProductService } from '../../services/product.service';
 @Component({
   selector: 'app-details-prod',
   templateUrl: './details-prod.component.html',
-  styleUrls: ['./details-prod.component.css']
+  styleUrls: ['./details-prod.component.css'],
 })
-export class DetailsProdComponent implements OnInit{
+export class DetailsProdComponent implements OnInit {
   loading: boolean = false;
   id: number;
   category: string;
@@ -17,7 +17,10 @@ export class DetailsProdComponent implements OnInit{
   description: string;
   shortDescription: string;
   price: number;
-  image: string;
+  coverImage: string;
+  images1: string;
+  images2: string;
+  images3: string;
   stock: number;
 
   constructor(
@@ -31,9 +34,12 @@ export class DetailsProdComponent implements OnInit{
     this.category = '';
     this.name = '';
     this.description = '';
-    this.shortDescription= '';
+    this.shortDescription = '';
     this.price = 0;
-    this.image = '';
+    this.coverImage = '';
+    this.images1 = '';
+    this.images2 = '';
+    this.images3 = '';
     this.stock = 0;
   }
 
@@ -56,9 +62,13 @@ export class DetailsProdComponent implements OnInit{
       (product: Product) => {
         this.name = product.name;
         this.category = product.category;
-        this.description = product.shortDescription;
+        this.description = product.description;
+        this.shortDescription = product.shortDescription;
         this.price = product.price;
-        this.image = product.coverImage;
+        this.coverImage = product.coverImage;
+        this.images1 = product.images1;
+        this.images2 = product.images2;
+        this.images3 = product.images3;
         this.stock = product.stock;
         this.loading = false;
         this.router.navigate([`detailsProd/${product.id}`]);
@@ -73,5 +83,4 @@ export class DetailsProdComponent implements OnInit{
     this.toastr.error(errorMessage, 'Error');
     this.router.navigate(['detailsProd/{{product.id}}']);
   }
-
 }

@@ -16,10 +16,11 @@ export class OrdersPanelComponent implements OnInit {
   loading: boolean = false;
   //ordersList: Order[] = [];
   ordersList: Order[] = [
-    { orderId: 1, userId: 1, products: [ 1, 2, 3], status: 'sent' },
-    { orderId: 2, userId: 1, products: [ 4, 5, 6], status: 'sent' },
-    { orderId: 3, userId: 2, products: [ 7, 8, 9], status: 'sent' },
-    { orderId: 4, userId: 1, products: [ 10, 11, 12], status: 'sent' },
+    { id: "1", userId: 1, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent' },
+    { id: "23", userId: 45, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent' },
+    { id: "41", userId: 19, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent' },
+    { id: "754", userId: 56, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent' },
+    { id: "22", userId: 45, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent' },
   ];
 
   constructor(
@@ -39,49 +40,43 @@ export class OrdersPanelComponent implements OnInit {
     });
   }
 
-  rejectOrder(orderId: number, orderStatus: string): void {
+  rejectOrder(order: Order): void {
     this.loading = true;
-    this._orderService.rejectOrder(orderId, orderStatus).subscribe(() => {
+    let rejectedOrder: Order = { ...order };
+    rejectedOrder.status = "rejected";
+    this._orderService.updateOrder(order.id, rejectedOrder).subscribe(() => {
       this.getOrders();
-      this.toastr.warning(`Orden (${orderId}) rechazada con exito!`, 'Orden rechazada');
+      this.toastr.warning(`Orden (${order}) rechazada con exito!`, 'Orden rechazada');
       this.loading = false;
     });    
   }
 
   acceptOrder(order: Order): void {
     this.loading = true;
-    this._orderService.acceptOrder(order).subscribe(() => {
+    let acceptedOrder: Order = { ...order };
+    acceptedOrder.status = "accepted";
+    this._orderService.updateOrder(order.id, acceptedOrder).subscribe(() => {
       this.getOrders();
       this.toastr.warning(`Orden (${order}) aceptada con exito!`, 'Orden aceptada');
       this.loading = false;
     });    
   }
 
-  openRejectOrderDialog(order: Order): void {
+  openOrderDialog(order: Order): void {
     let dialogRef = this.dialog.open(OrderDialogComponent, { 
-      width: "40%", height: "30%",
+      width: "60%", height: "50%",
       data: {
-        orderId: order.orderId, orderUser: order.userId
+        order: {...order} 
       }
     }); 
-    dialogRef.afterClosed().subscribe((result: number) => {
-      if(typeof result === "number") {
-        this.rejectOrder(result);
-      }
-    });
-  }
-
-  openAcceptOrderDialog(order: Order): void {
-    let dialogRef = this.dialog.open(OrderDialogComponent, { 
-      width: "40%", height: "30%",
-      data: {
-        orderId: order.orderId, orderUser: order.userId
-      }
-    }); 
-    dialogRef.afterClosed().subscribe((result: number) => {
-      if(typeof result === "number") {
-        this.acceptOrder(result);
-      }
+    dialogRef.afterClosed().subscribe((result) => {
+        if(result === "accept") {
+          this.acceptOrder(result);
+        }
+        else if(result == "reject") {
+          this.rejectOrder(result);
+        }
+        this.getOrders();
     });
   }
 }

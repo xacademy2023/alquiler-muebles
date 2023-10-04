@@ -26,6 +26,7 @@ export const User = sequelize.define(
       type: DataTypes.ENUM("admin", "comprador", "vendedor"),
       defaultValue: "comprador",
     },
+    
   },
   {
     timestamps: false,

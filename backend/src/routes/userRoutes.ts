@@ -8,7 +8,7 @@ const router = Router();
 router.post("/", userController.newUser);
 router.post("/login", userController.loginUser);
 router.get("/:userId", userController.getUser);
-router.get("/", [validateToken, isAuth(["admin"])], userController.getAllUsers);
+router.get("/", [validateToken, isAuth(["admin"])], userController.getAllUsers)
 router.put(
   "/:userId",
   [validateToken, isAuth(["admin"])],

@@ -20,19 +20,15 @@ export class OrderService {
         return this.http.get<Order[]>(`${this.myAppUrl}${this.myApiUrl}` ) 
     }
 
-    cancelOrder(id: number): Observable<void> {
+    deleteOrder(id: string): Observable<void> {
         return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}/${id}`)
-    }
-
-    acceptOrder(order: Order): Observable<void> {
-        return this.http.post<void>(`${this.myAppUrl}${this.myApiUrl}`, order)
     }
 
     getOrder(id: number): Observable<Order> {
         return this.http.get<Order>(`${this.myAppUrl}${this.myApiUrl}/${id}`)
     }
 
-    rejectOrder(id: number, orderStatus: string): Observable<void> {
-        return this.http.put<void>(`${this.myAppUrl}${this.myApiUrl}/${id}`, orderStatus)
+    updateOrder(id: string, updatedOrder: Order): Observable<void> {
+        return this.http.put<void>(`${this.myAppUrl}${this.myApiUrl}/${id}`, updatedOrder)
     }
 }

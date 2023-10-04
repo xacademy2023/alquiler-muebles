@@ -1,4 +1,4 @@
-<header>
+<!-- <header>
   <div class="header-principal">
     <div class="iconos">
       <div class="soporte-cliente">
@@ -19,11 +19,6 @@
         <button *ngIf="isLogged" class="inicio-sesion" (click)="logout()">
           Cerrar sesión
         </button>
-        <!--<i id="cesta" class="fa-solid fa-basket-shopping"></i>
-                    <div class="shopping-content-cart">
-                        <span class="text-carrito">Carrito</span>
-                        <span class="number-carrito">(0)</span>
-                    </div> -->
       </div>
       <div class="container-icon">
         <div class="container-cart-icon">
@@ -71,5 +66,28 @@
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
     </form>
+  </div>
+</header> -->
+
+<header>
+  <nav>
+    <div class="container-logo">
+      <a href="/home">
+        <img class="img-logo" src="assets/img/Logotipo Mueblería.png"
+      /></a>
+    </div>
+    <li><a href="/home">Inicio</a></li>
+    <li><a href="/home">Nosotros</a></li>
+  </nav>
+  <div class="container-user">
+    <i class="fa-solid fa-user user"></i>
+    <button *ngIf="!isLogged" class="login-btn" (click)="login()">
+      Iniciar sesión
+    </button>
+    <button *ngIf="isLogged" class="login-btn" (click)="logout()">
+      Cerrar sesión
+    </button>
+
+    <i *ngIf="isLogged" class="fa-solid fa-basket-shopping cart-icon"></i>
   </div>
 </header>

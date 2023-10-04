@@ -1,4 +1,4 @@
-<app-progress-bar *ngIf="loading"></app-progress-bar>
+<app-spinner *ngIf="loading"></app-spinner>
 <!--
 <div *ngIf="!loading" class="container mt-2 text-center">
 -->
@@ -11,23 +11,23 @@
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Comprador</th>
-        <th scope="col">Opciones</th>
+        <th scope="col">Productos</th>
+        <th scope="col">Status</th>
       </tr>
     </thead>
     <tbody>
     <tr *ngFor="let order of ordersList">
-      <td>{{ order.orderId }}</td>
+      <td>{{ order.id }}</td>
         <td>{{ order.userId }}</td>
         <td>
           <button mat-button style="border-radius: 5px; background-color: rgb(100, 200, 240);
-                  margin-right: 2rem;" (click)=" openAcceptOrderDialog(order)">Aceptar
-          </button>
-          <button mat-button style="border-radius: 5px; background-color: rgb(255, 200, 0);"
-                  (click)="openRejectOrderDialog(order)">Rechazar
+                  margin-right: 2rem;" (click)=" openOrderDialog(order)">
+            Ver Carrito
           </button>
         </td>
+        <td>{{ order.status }}</td>
       </tr>
     </tbody>
   </table>
-  <h5 *ngIf="ordersList.length == 0">No hay ordenesordenes  disponibles</h5>
+  <h5 *ngIf="ordersList.length == 0">No hay ordenes disponibles</h5>
 </div>

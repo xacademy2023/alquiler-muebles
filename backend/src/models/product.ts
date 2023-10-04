@@ -54,3 +54,7 @@ export const Product = sequelize.define(
     timestamps: false,
   }
 );
+
+
+
+

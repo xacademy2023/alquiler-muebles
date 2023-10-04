@@ -1,8 +1,9 @@
 import express, { Application } from "express";
-import {userRouter,categoryRouter,productRouter} from "../routes"
+import {userRouter,categoryRouter,productRouter,orderRouter} from "../routes"
 import cors from "cors";
 import sequelize from "../db/connection";
-import { Product, Category, User } from "./index";
+import { Product, Category, User, Order,ProductOrder } from "./index";
+
 
 class Server {
   private app: Application;
@@ -27,6 +28,7 @@ class Server {
     this.app.use("/products", productRouter);
     this.app.use("/users", userRouter);
     this.app.use("/categories", categoryRouter);
+    this.app.use("/orders", orderRouter);
   }
 
   midlewares() {
@@ -36,9 +38,12 @@ class Server {
 
   async dbConnect() {
     try {
+      await User.sync({ alter: true });
+      await Order.sync({ alter: true });
       await Category.sync({ alter: true });
       await Product.sync({ alter: true });
-      await User.sync({ alter: true });
+      await ProductOrder.sync({ alter: true });
+     
     } catch (error) {
       console.error("Unable to connect to the database:", error);
     }
