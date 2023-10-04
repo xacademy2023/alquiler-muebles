@@ -1,102 +1,85 @@
 <div class="container">
   <app-spinner *ngIf="loading"></app-spinner>
   <div class="container-detailsProd">
-    <div class="container-carousel">
-      <div id="carouselExampleCaptions" class="carousel slide">
-        <div class="carousel-indicators">
-          <button
-            id="boton-inferior"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="0"
-            class="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            id="boton-inferior"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            id="boton-inferior"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-          ></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active" id="item-active">
-            <img src="{{ images1 }}" class="d-block w-75" alt="..." />
-            <div class="carousel-caption d-none d-md-block text dark">
-              <!--<h5>En stock</h5>
-              <p>Disponible en tres colores.</p>-->
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="{{ images2 }}" class="d-block w-75" alt="..." />
-            <div class="carousel-caption d-none d-md-block text dark">
-              <!--<h5>En stock</h5>
-              <p>Disponible en tres colores.</p>-->
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="{{ images3 }}" class="d-block w-75" alt="..." />
-            <div class="carousel-caption d-none d-md-block text dark">
-              <!-- <h5>En stock</h5>
-              <p>Disponible en tres colores.</p>-->
-            </div>
-          </div>
-        </div>
+    <div id="carouselExampleIndicators" class="carousel slide">
+      <div class="carousel-indicators">
         <button
-          id="boton-lateral"
-          class="carousel-control-prev"
           type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
         <button
-          id="boton-lateral"
-          class="carousel-control-next"
           type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
       </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="{{ images1 }}"
+            class="d-block"
+            alt="{{ name }}"
+            height="500"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="{{ images2 }}"
+            class="d-block"
+            alt="{{ name }}"
+            height="500"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="{{ images3 }}"
+            class="d-block"
+            alt="{{ name }}"
+            height="500"
+          />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <div class="text-details">
-      <h2 class="text-detalle">{{ name }}</h2>
-      <p class="text-detalle-1">{{ shortDescription }}</p>
-      <p class="text-price">${{ price }}</p>
-      <!--<div class="mini-target-2"><mat-icon class="icon_1">today</mat-icon>
-        <div class="text-target"><p class="p_target"><span>Orden:</span></p></div>
-      </div>
-      <div class="mini-target-1"><mat-icon class="icon_1">assessment</mat-icon>
-        <div class="text-target"><p class="p_target"><span>Revenue:</span></p></div>
-      </div>-->
-      <div class="description">
-        <h4 class="text-description">{{ shortDescription }}</h4>
-        <p class="text-description-1">{{ description }}</p>
-        <p class="text-description-2"><b>Categoría:</b> {{ category }}</p>
-      </div>
-    </div>
-    <div class="botones">
-      <h4 class="text-description-2"><b>Stock Disponible</b></h4>
-      <div class="dropdown">
-        <p id="text-cantidad" class="cant-selection">Cantidad:</p>
-        <input type="number" min="1" max="99" />
-        <p class="cant-selection-1">({{ stock }} disponibles en stock)</p>
-      </div>
-      <button class="envio" type="submit">Agregar al pedido</button>
+    <div class="content">
+      <h2 class="content-name">{{ name }}</h2>
+      <p class="content-short-description">
+        <b>Descripción:</b> {{ shortDescription }}
+      </p>
+      <p class="text-description-2"><b>Categoría:</b> {{ category }}</p>
+      <p class="cant-selection-1"><b>Stock:</b> {{ stock }}</p>
+      <p class="content-price"><b>Precio:</b> ${{ price }}</p>
+      <button class="btn-add" type="submit" (click)="addProduct()">
+        Agregar al pedido
+      </button>
     </div>
   </div>
 </div>

@@ -80,7 +80,8 @@
     <li><a href="/home">Nosotros</a></li>
   </nav>
   <div class="container-user">
-    <i class="fa-solid fa-user user"></i>
+    <p class="user-name">{{ userName }}</p>
+    <i *ngIf="!isLogged" class="fa-solid fa-user user"></i>
     <button *ngIf="!isLogged" class="login-btn" (click)="login()">
       Iniciar sesión
     </button>
@@ -88,6 +89,10 @@
       Cerrar sesión
     </button>
 
-    <i *ngIf="isLogged" class="fa-solid fa-basket-shopping cart-icon"></i>
+    <i
+      *ngIf="isLogged"
+      class="fa-solid fa-basket-shopping cart-icon"
+      routerLink="/cart"
+    ></i>
   </div>
 </header>

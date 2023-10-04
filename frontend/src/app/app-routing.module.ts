@@ -13,6 +13,7 @@ import { authGuard } from './utils/auth.guard';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -44,6 +45,12 @@ const routes: Routes = [
     component: AdminDashboardComponent,
     canActivate: [authGuard],
     data: { role: 'admin' },
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
+    canActivate: [authGuard],
+    data: { role: 'comprador' },
   },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
