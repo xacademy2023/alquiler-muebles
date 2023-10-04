@@ -14,14 +14,15 @@ import { OrderService } from '../../services/order.service';
 export class OrdersPanelComponent implements OnInit {
 
   loading: boolean = false;
-  //ordersList: Order[] = [];
+  ordersList: Order[] = [];
+  /*
   ordersList: Order[] = [
-    { id: "1", userId: 1, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent' },
-    { id: "23", userId: 45, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent' },
-    { id: "41", userId: 19, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent' },
-    { id: "754", userId: 56, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent' },
-    { id: "22", userId: 45, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent' },
+    { id: 1, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent', user: { name: "juan", id: 33 }, userId: 1, productId: 7 },
+    { id: 56, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent', user: { name: "juan", id: 32 }, userId: 5, productId: 7 },
+    { id: 32, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent', user: { name: "juan", id: 73 }, userId: 1, productId: 7 },
+    { id: 98, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent', user: { name: "juan", id: 99 }, userId: 8, productId: 7 },
   ];
+  */
 
   constructor(
     private _orderService: OrderService,
@@ -42,9 +43,7 @@ export class OrdersPanelComponent implements OnInit {
 
   rejectOrder(order: Order): void {
     this.loading = true;
-    let rejectedOrder: Order = { ...order };
-    rejectedOrder.status = "rejected";
-    this._orderService.updateOrder(order.id, rejectedOrder).subscribe(() => {
+    this._orderService.updateOrder(order.id, { status: "rejected" }).subscribe(() => {
       this.getOrders();
       this.toastr.warning(`Orden (${order}) rechazada con exito!`, 'Orden rechazada');
       this.loading = false;
@@ -53,9 +52,7 @@ export class OrdersPanelComponent implements OnInit {
 
   acceptOrder(order: Order): void {
     this.loading = true;
-    let acceptedOrder: Order = { ...order };
-    acceptedOrder.status = "accepted";
-    this._orderService.updateOrder(order.id, acceptedOrder).subscribe(() => {
+    this._orderService.updateOrder(order.id, { status: "accepted" }).subscribe(() => {
       this.getOrders();
       this.toastr.warning(`Orden (${order}) aceptada con exito!`, 'Orden aceptada');
       this.loading = false;
@@ -76,7 +73,7 @@ export class OrdersPanelComponent implements OnInit {
         else if(result == "reject") {
           this.rejectOrder(result);
         }
-        this.getOrders();
+        console.log(result);
     });
   }
 }

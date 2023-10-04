@@ -3,6 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from '../../interfaces/products';
 import { ProductService } from '../../services/product.service';
+import { OrderService } from '../../services/order.service';
+import { Order } from 'src/app/interfaces/order';
+import { getUserData } from 'src/app/shared/userData/getUserData';
 
 @Component({
   selector: 'app-details-prod',
@@ -25,6 +28,7 @@ export class DetailsProdComponent implements OnInit {
 
   constructor(
     private _productService: ProductService,
+    private _orderService: OrderService,
     private router: Router,
     private toastr: ToastrService,
     private route: ActivatedRoute,
@@ -82,5 +86,27 @@ export class DetailsProdComponent implements OnInit {
   handleError(errorMessage: string) {
     this.toastr.error(errorMessage, 'Error');
     this.router.navigate(['detailsProd/{{product.id}}']);
+  }
+
+  addProduct() {
+    const { userId, role } = getUserData();
+    if (role === 'comprador') {
+      const order: Order = {
+        userId,
+        productId: this.id,
+      };
+
+      this._orderService.newOrder(order).subscribe(
+        (order): void => {
+          this.toastr.success('Producto agregado al carrito');
+        },
+        (error) => {
+          this.handleError('Ocurrió un error al agregar el producto');
+        }
+      );
+    } else {
+      this.handleError('Debes logearte para agregar un producto al carrito');
+      this.router.navigate(['/login']);
+    }
   }
 }

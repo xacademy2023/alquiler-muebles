@@ -7,21 +7,22 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./order-dialog.component.css']
 })
 export class OrderDialogComponent implements OnInit {
-  dashboardData: any;
+  orderData: any;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private ref: MatDialogRef<OrderDialogComponent>
   ) {}
 
   ngOnInit(): void {
-    this.dashboardData = this.data;
-  }
-  
-  rejectOrder(): void {
-    this.ref.close(this.dashboardData.order.orderId);
+    this.orderData = this.data;
+    console.log(this.data);
   }
 
   acceptOrder(): void {
-    this.ref.close(this.dashboardData.order);
+    this.ref.close("accept");
+  }
+
+  rejectOrder(): void {
+    this.ref.close("reject");
   }
 }

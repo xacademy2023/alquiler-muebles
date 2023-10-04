@@ -42,6 +42,7 @@ import { DialogComponent } from './components/admin-dashboard/dialog/dialog.comp
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { OrdersPanelComponent } from './components/orders-panel/orders-panel.component';
 import { OrderDialogComponent } from './components/orders-panel/order-dialog/order-dialog.component';
+import { CartComponent } from './components/cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +61,7 @@ import { OrderDialogComponent } from './components/orders-panel/order-dialog/ord
     AdminDashboardComponent,
     OrdersPanelComponent,
     OrderDialogComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

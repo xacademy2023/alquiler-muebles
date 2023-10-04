@@ -1,8 +1,8 @@
 <app-spinner *ngIf="loading"></app-spinner>
-<!--
 <div *ngIf="!loading" class="container mt-2 text-center">
--->
+<!--
 <div class="container mt-2 text-center">
+-->
   <div class="title">
     <h2>Ordenes</h2>
   </div>
@@ -18,7 +18,11 @@
     <tbody>
     <tr *ngFor="let order of ordersList">
       <td>{{ order.id }}</td>
-        <td>{{ order.userId }}</td>
+      <td>
+        <div *ngFor="let userElement of order.user | keyvalue">
+          <span>{{ userElement.key }} {{ userElement.value }}</span>
+        </div>
+      </td>
         <td>
           <button mat-button style="border-radius: 5px; background-color: rgb(100, 200, 240);
                   margin-right: 2rem;" (click)=" openOrderDialog(order)">

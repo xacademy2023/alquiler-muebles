@@ -1,6 +1,6 @@
 <div class="container">
   <h2 mat-dialog-title>
-    Orden: {{ dashboardData.order.orderId }}
+    Orden: {{ orderData.order.orderId }}
   </h2>
   <mat-dialog-content>
   <table>
@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let product of dashboardData.order.products">
+    <tr *ngFor="let product of orderData.order.products">
       <td>{{ product.id }}</td>
       <td>{{ product.name }}</td>
       <td>{{ product.price }}</td>
