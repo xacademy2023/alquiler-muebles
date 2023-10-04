@@ -43,6 +43,7 @@ export const loginUser = async (req: Request, res: Response) => {
       email: email,
       role: user.role,
       userId: user.id,
+      userName: user.name,
     },
     process.env.SECRET_KEY || "secret"
   );
@@ -68,7 +69,6 @@ export const getUser = async (req: Request, res: Response) => {
         .status(404)
         .json({ action: "getUser", error: "error when fetching user" });
     } else {
-
       res.json(user);
     }
   } catch (error: any) {

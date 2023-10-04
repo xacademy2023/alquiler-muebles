@@ -1,31 +1,42 @@
-<div class="container">
-  <h2 class="text-center">Mi orden</h2>
-  <div class="products-container">
-    <div class="item-container">
-      <p>Mesa redonda</p>
-      <p>Precio: <span>$100</span></p>
-      <p>Cantidad: <span>15</span></p>
-      <p>Total: <span>$1500</span></p>
-      <button class="btn btn-danger">Eliminar</button>
+<div class="cart-container">
+  <p class="empty-cart" *ngIf="cartIsEmpty">
+    El carrito esta vacío, para crear una orden agregue al menos un producto.
+  </p>
+  <div *ngIf="!loading && !cartIsEmpty" class="container">
+    <h2 class="text-center">Número de Orden: {{ idOrder }}</h2>
+    <div class="products-container">
+      <div *ngFor="let product of myProducts" class="item-container">
+        <p>{{ product.name }}</p>
+        <p>
+          Precio: <span>${{ product.price }}</span>
+        </p>
+        <div class="quantity">
+          <p>
+            Cantidad: <span>{{ quantity }}</span>
+          </p>
+          <div class="up-down">
+            <i class="fa-solid fa-caret-up" (click)="add()"></i>
+            <i class="fa-solid fa-caret-down" (click)="decrease()"></i>
+          </div>
+        </div>
+        <p>
+          Total: <span>{{ quantity * product.price }}</span>
+        </p>
+        <button class="btn btn-danger" (click)="deleteProduct()">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </div>
     </div>
-    <div class="item-container">
-      <p>Mesa redonda</p>
-      <p>Precio: <span>$100</span></p>
-      <p>Cantidad: <span>15</span></p>
-      <p>Total: <span>$1500</span></p>
-      <button class="btn btn-danger">Eliminar</button>
+    <p class="total-order">
+      Total: <span>{{ totalCart }}</span>
+    </p>
+    <div class="order-actions">
+      <button class="btn btn-danger" (click)="deleteOrder()">
+        Cancelar orden
+      </button>
+      <button class="btn btn-confirm" (click)="confirmOrder()">
+        Confirmar orden
+      </button>
     </div>
-    <div class="item-container">
-      <p>Mesa redonda</p>
-      <p>Precio: <span>$100</span></p>
-      <p>Cantidad: <span>15</span></p>
-      <p>Total: <span>$1500</span></p>
-      <button class="btn btn-danger">Eliminar</button>
-    </div>
-  </div>
-  <p class="total-order">Total: <span>$30000</span></p>
-  <div class="order-actions">
-    <button class="btn btn-danger">Cancelar orden</button>
-    <button class="btn btn-confirm">Confirmar orden</button>
   </div>
 </div>
