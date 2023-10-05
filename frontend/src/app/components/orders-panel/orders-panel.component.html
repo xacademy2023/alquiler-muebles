@@ -1,0 +1,37 @@
+<app-spinner *ngIf="loading"></app-spinner>
+<div *ngIf="!loading" class="container mt-2 text-center">
+<!--
+<div class="container mt-2 text-center">
+-->
+  <div class="title">
+    <h2>Ordenes</h2>
+  </div>
+  <table *ngIf="ordersList.length > 0" class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Comprador</th>
+        <th scope="col">Productos</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of ordersList">
+      <td>{{ order.id }}</td>
+      <td>
+        <div *ngFor="let userElement of order.user | keyvalue">
+          <span>{{ userElement.key }} {{ userElement.value }}</span>
+        </div>
+      </td>
+        <td>
+          <button mat-button style="border-radius: 5px; background-color: rgb(100, 200, 240);
+                  margin-right: 2rem;" (click)=" openOrderDialog(order)">
+            Ver Carrito
+          </button>
+        </td>
+        <td>{{ order.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 *ngIf="ordersList.length == 0">No hay ordenes disponibles</h5>
+</div>

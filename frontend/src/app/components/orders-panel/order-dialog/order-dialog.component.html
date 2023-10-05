@@ -1,0 +1,33 @@
+<div class="container">
+  <h2 mat-dialog-title>
+    Orden: {{ orderData.order.orderId }}
+  </h2>
+  <mat-dialog-content>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Producto</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of orderData.order.products">
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }}</td>
+    </tr>
+    </tbody>
+  </table>
+  </mat-dialog-content>
+  <mat-dialog-actions style="margin: auto; background-color: rgb(230, 240, 240);">
+    <button mat-button style="margin-right: 4rem;"(click)="acceptOrder()">
+      Aceptar Orden
+    </button>
+    <button mat-button style="margin-right: 4rem;"(click)="rejectOrder()">
+      Rechazar Orden
+    </button>
+    <button mat-button mat-dialog-close>
+      Regresar
+    </button>
+  </mat-dialog-actions>
+</div>

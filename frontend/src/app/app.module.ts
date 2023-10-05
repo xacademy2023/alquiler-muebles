@@ -40,6 +40,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DialogComponent } from './components/admin-dashboard/dialog/dialog.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { OrdersPanelComponent } from './components/orders-panel/orders-panel.component';
+import { OrderDialogComponent } from './components/orders-panel/order-dialog/order-dialog.component';
 import { CartComponent } from './components/cart/cart.component';
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { CartComponent } from './components/cart/cart.component';
     FooterComponent,
     DialogComponent,
     AdminDashboardComponent,
+    OrdersPanelComponent,
+    OrderDialogComponent,
     CartComponent,
   ],
   imports: [
