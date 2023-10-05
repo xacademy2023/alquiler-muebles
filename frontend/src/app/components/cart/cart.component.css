@@ -77,3 +77,25 @@ h2 {
   justify-content: center;
   align-items: center;
 }
+
+.quantity-number {
+  position: relative;
+}
+
+.icon-up,
+.icon-down {
+  cursor: pointer;
+  position: absolute;
+  font-size: 1.4rem;
+  right: 0.9rem;
+}
+
+.icon-up {
+  color: green;
+  bottom: 1.2rem;
+}
+
+.icon-down {
+  color: red;
+  bottom: -1.2rem;
+}
