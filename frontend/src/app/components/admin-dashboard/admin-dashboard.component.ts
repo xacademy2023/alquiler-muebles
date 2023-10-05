@@ -8,10 +8,10 @@ import { DialogComponent } from './dialog/dialog.component';
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
-  styleUrls: ['./admin-dashboard.component.css']
+  styleUrls: ['./admin-dashboard.component.css'],
 })
 export class AdminDashboardComponent implements OnInit {
-/*
+  /*
   usersList: User[] = [
     { id: 1, name: "Luis1", email: "luis1@gmail.com", password: "", role: "comprador" },
     { id: 2, name: "Luis1", email: "luis1@gmail.com", password: "", role: "vendedor" },
@@ -27,7 +27,8 @@ export class AdminDashboardComponent implements OnInit {
   constructor(
     private _userService: UserService,
     private toastr: ToastrService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.getAllUsers();
@@ -45,34 +46,40 @@ export class AdminDashboardComponent implements OnInit {
     this.loading = true;
     this._userService.deleteUser(userId).subscribe(() => {
       this.getAllUsers();
-      this.toastr.warning(`Usuario (${userId}) eliminado con exito!`, 'Usuario eliminado');
+      this.toastr.warning(
+        `Usuario (${userId}) eliminado con exito!`,
+        'Usuario eliminado'
+      );
       this.loading = false;
     });
   }
 
-
-
   updateUserRole(userId: number, newRole: string): void {
     this.loading = true;
-    this._userService.updateUser(userId, newRole).subscribe(() => {
+    this._userService.updateRole(userId, { role: newRole }).subscribe(() => {
       this.getAllUsers();
-      this.toastr.warning(`Usuario (${userId}) actualizado con exito!`, 'Usuario actualizado');
+      this.toastr.warning(
+        `Usuario (${userId}) actualizado con exito!`,
+        'Usuario actualizado'
+      );
       this.loading = false;
-    });    
+    });
   }
 
   openDeleteUserDialog(user: User): void {
-    let dialogRef = this.dialog.open(DialogComponent, { 
-      width: "40%", height: "30%",
+    let dialogRef = this.dialog.open(DialogComponent, {
+      width: '40%',
+      height: '30%',
       data: {
-        userId: user.id, userName: user.name, userEmail: user.email
-      }
-    }); 
+        userId: user.id,
+        userName: user.name,
+        userEmail: user.email,
+      },
+    });
     dialogRef.afterClosed().subscribe((result: number) => {
-      if(typeof result === "number") {
+      if (typeof result === 'number') {
         this.deleteUser(result);
       }
     });
   }
 }
-

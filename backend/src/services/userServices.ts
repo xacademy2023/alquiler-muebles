@@ -28,7 +28,7 @@ export const createUser = async (user: any) => {
 
 export const getAllUsers = async () => {
   try {
-    const users = await User.findAll({include: {all:true}} );
+    const users = await User.findAll({ include: { all: true } });
     return users;
   } catch (error) {
     console.error("Error when fetching users", error);
@@ -37,7 +37,7 @@ export const getAllUsers = async () => {
 
 export const getUser = async (userId: string) => {
   try {
-    const user = await User.findByPk(userId , {include: {all:true}});
+    const user = await User.findByPk(userId, { include: { all: true } });
     return user;
   } catch (error) {
     console.error("Error when fetching user", error);
@@ -50,6 +50,22 @@ export const updateUser = async (userId: string, updatedUser: any) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.update(
       { ...updatedUser, password: hashedPassword },
+      {
+        where: {
+          id: userId,
+        },
+      }
+    );
+    return user;
+  } catch (error) {
+    console.error("Error when updating user", error);
+  }
+};
+
+export const updateRole = async (userId: string, updatedUser: any) => {
+  try {
+    const user = await User.update(
+      { ...updatedUser },
       {
         where: {
           id: userId,

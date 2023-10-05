@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   private myAppUrl: string;
@@ -13,7 +13,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {
     this.myAppUrl = environment.endpoint;
-    this.myApiUrl = 'users/';
+    this.myApiUrl = 'users';
   }
 
   signIn(user: User): Observable<any> {
@@ -21,7 +21,10 @@ export class UserService {
   }
 
   login(user: User): Observable<string> {
-    return this.http.post<string>(`${this.myAppUrl}${this.myApiUrl}/login`, user)
+    return this.http.post<string>(
+      `${this.myAppUrl}${this.myApiUrl}/login`,
+      user
+    );
   }
 
   getAllUsers(): Observable<User[]> {
@@ -37,6 +40,16 @@ export class UserService {
   }
 
   updateUser(userId: number, updatedUser: any): Observable<void> {
-    return this.http.put<void>(`${this.myAppUrl}${this.myApiUrl}/${userId}`, updatedUser);
+    return this.http.put<void>(
+      `${this.myAppUrl}${this.myApiUrl}/${userId}`,
+      updatedUser
+    );
+  }
+
+  updateRole(userId: number, role: any): Observable<void> {
+    return this.http.put<void>(
+      `${this.myAppUrl}${this.myApiUrl}/role/${userId}`,
+      role
+    );
   }
 }
