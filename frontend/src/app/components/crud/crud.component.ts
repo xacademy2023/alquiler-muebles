@@ -76,6 +76,7 @@ export class CrudComponent implements OnInit {
       images1: this.form.value.images1,
       images2: this.form.value.images2,
       images3: this.form.value.images3,
+      quantity: 1,
     };
 
     this.loading = true;

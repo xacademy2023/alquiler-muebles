@@ -14,9 +14,7 @@ export class CartComponent {
   idOrder: number | undefined = 0;
   myProducts: Product[] | undefined = [];
   loading: boolean = false;
-  quantity: number = 1;
-  totalItem: number = 0;
-  totalCart: number = 0;
+  totalCart: number | undefined = 0;
   cartIsEmpty: boolean = false;
 
   constructor(private _orderService: OrderService, private router: Router) {}
@@ -32,16 +30,23 @@ export class CartComponent {
         const orderInProgress = orders.filter(
           (order) => order.status === 'inProgress'
         );
-        this.idOrder = orderInProgress[0].id;
-        this.myProducts = orderInProgress[0].products;
-        this.loading = false;
+
+        if (orderInProgress) {
+          this.idOrder = orderInProgress[0].id;
+          this.myProducts = orderInProgress[0].products;
+          this.myProducts?.forEach((product) => {
+            product.quantity = 1;
+          });
+          this.calculateTotal();
+          this.loading = false;
+        }
       } catch (error) {
         this.cartIsEmpty = true;
       }
     });
   }
 
-  deleteProduct() {
+  deleteProduct(idProduct: number | undefined) {
     Swal.fire({
       title: '¿Estas seguro/a de eliminar el producto?',
       showCancelButton: true,
@@ -52,8 +57,14 @@ export class CartComponent {
       confirmButtonColor: 'green',
     }).then((result) => {
       if (result.isConfirmed) {
+        const productFound: any = this.myProducts?.find(
+          (product) => product.id === idProduct
+        );
+        const { id } = productFound;
+        this._orderService.deleteProductOrder(id, this.idOrder).subscribe();
         Swal.fire('Producto eliminado!', '', 'success');
       }
+      this.getOrder();
     });
   }
 
@@ -95,11 +106,22 @@ export class CartComponent {
     });
   }
 
-  add() {
-    console.log('Agregando');
+  calculateTotal() {
+    this.totalCart = this.myProducts?.reduce(
+      (total, product) => total + product.quantity * product.price,
+      0
+    );
   }
 
-  decrease() {
-    console.log('Restando');
+  add(product: Product) {
+    product.quantity++;
+    this.calculateTotal();
+  }
+
+  decrease(product: Product) {
+    if (product.quantity > 1) {
+      product.quantity--;
+      this.calculateTotal();
+    }
   }
 }

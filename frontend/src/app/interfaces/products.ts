@@ -10,4 +10,5 @@ export interface Product {
   images1: string;
   images2: string;
   images3: string;
+  quantity: number;
 }

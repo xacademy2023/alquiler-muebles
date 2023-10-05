@@ -24,6 +24,15 @@ export class OrderService {
     return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}/${id}`);
   }
 
+  deleteProductOrder(
+    id: number | undefined,
+    orderId: number | undefined
+  ): Observable<void> {
+    return this.http.delete<void>(
+      `${this.myAppUrl}${this.myApiUrl}/cart/${id}/${orderId}`
+    );
+  }
+
   newOrder(order: Order): Observable<void> {
     return this.http.post<void>(`${this.myAppUrl}${this.myApiUrl}`, order);
   }
