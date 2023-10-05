@@ -94,6 +94,24 @@ export const updateUser = async (req: Request, res: Response) => {
   }
 };
 
+export const updateRole = async (req: Request, res: Response) => {
+  try {
+    const updatedUser = await userService.updateRole(
+      req.params.userId,
+      req.body
+    );
+    if (!updatedUser) {
+      res
+        .status(404)
+        .json({ action: "updateUser", error: "error when updating user role" });
+    } else {
+      res.json({ msg: "Rol actualizado correctamente" });
+    }
+  } catch (error: any) {
+    res.status(500).json({ action: "updateRole", error: error.message });
+  }
+};
+
 export const deleteUser = async (req: Request, res: Response) => {
   try {
     const { userId } = req.params;
