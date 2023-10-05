@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { orderService, productOrderService } from "../services";
+import { Order, ProductOrder } from "../models";
 
 export const getOrders = async (req: Request, res: Response) => {
   try {
@@ -14,11 +15,9 @@ export const newOrder = async (req: Request, res: Response) => {
   try {
     const { userId, productId } = req.body;
     const orderInProgress = await orderService.getOrderInProgress();
-    console.log(orderInProgress)
     const idOrder = orderInProgress?.dataValues.id;
-    if (orderInProgress===null) {
+    if (orderInProgress === null) {
       const newOrder = await orderService.createOrder(userId);
-      console.log(newOrder);
       res.json({
         newOrder,
       });
@@ -59,7 +58,8 @@ export const deleteOrder = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const deletedOrder = await orderService.deleteOrder(id);
-    if (deletedOrder === 0) {
+    const deleteProductOrder = await productOrderService.deleteProductOrder(id);
+    if (deletedOrder === 0 && deleteProductOrder === 0) {
       res
         .status(404)
         .json({ action: "deleteOrder", error: "error when deleting order" });
@@ -68,6 +68,31 @@ export const deleteOrder = async (req: Request, res: Response) => {
     }
   } catch (error: any) {
     res.status(500).json({ action: "deleteOrder", error: error.message });
+  }
+};
+
+export const deleteProductOrder = async (req: Request, res: Response) => {
+  try {
+    const { id, orderId } = req.params;
+    const deleteOneProductOrder =
+      await productOrderService.deleteOneProductOrder(id, orderId);
+
+    const orderFound = await ProductOrder.findAll({ where: { orderId } });
+    if (orderFound.length === 0) {
+      await Order.destroy({ where: { id: orderId } });
+    }
+    if (deleteOneProductOrder === 0) {
+      res.status(404).json({
+        action: "deleteOrder",
+        error: "error when deleting productOrder",
+      });
+    } else {
+      res.json({ messaje: `Product with id ${id} successfully deleted!` });
+    }
+  } catch (error: any) {
+    res
+      .status(500)
+      .json({ action: "deleteProductOrder", error: error.message });
   }
 };
 

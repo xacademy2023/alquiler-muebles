@@ -6,23 +6,32 @@
     <h2 class="text-center">Número de Orden: {{ idOrder }}</h2>
     <div class="products-container">
       <div *ngFor="let product of myProducts" class="item-container">
+        <img
+          src="{{ product.coverImage }}"
+          height="80"
+          alt="{{ product.name }}"
+        />
         <p>{{ product.name }}</p>
         <p>
           Precio: <span>${{ product.price }}</span>
         </p>
-        <div class="quantity">
+        <div class="quantity quantity-number">
           <p>
-            Cantidad: <span>{{ quantity }}</span>
+            Cantidad:
+            <span>{{ product.quantity }}</span>
           </p>
           <div class="up-down">
-            <i class="fa-solid fa-caret-up" (click)="add()"></i>
-            <i class="fa-solid fa-caret-down" (click)="decrease()"></i>
+            <i class="fa-solid fa-caret-up icon-up" (click)="add(product)"></i>
+            <i
+              class="fa-solid fa-caret-down icon-down"
+              (click)="decrease(product)"
+            ></i>
           </div>
         </div>
         <p>
-          Total: <span>{{ quantity * product.price }}</span>
+          Total: <span>${{ product.quantity * product.price }}</span>
         </p>
-        <button class="btn btn-danger" (click)="deleteProduct()">
+        <button class="btn btn-danger" (click)="deleteProduct(product.id)">
           <i class="fa-solid fa-trash"></i>
         </button>
       </div>

@@ -6,6 +6,7 @@
     ><button class="category">Otros</button>
   </div> -->
   <app-spinner *ngIf="loading"></app-spinner>
+  <h1>Nuestro Catálogo</h1>
   <div *ngIf="!loading" class="cards-container">
     <div *ngFor="let item of listProduct" class="card">
       <div class="card-details">
