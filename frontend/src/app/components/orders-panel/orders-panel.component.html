@@ -1,10 +1,11 @@
 <app-spinner *ngIf="loading"></app-spinner>
 <div *ngIf="!loading" class="container mt-2 text-center">
-<!--
-<div class="container mt-2 text-center">
--->
   <div class="title">
     <h2>Ordenes</h2>
+      <button mat-button style="border-radius: 5px; background-color: rgb(100, 200, 240);"
+        routerLink="/dashboard">
+        Regresar 
+      </button>
   </div>
   <table *ngIf="ordersList.length > 0" class="table">
     <thead>
@@ -20,13 +21,16 @@
       <td>{{ order.id }}</td>
       <td>
         <div *ngFor="let userElement of order.user | keyvalue">
-          <span>{{ userElement.key }} {{ userElement.value }}</span>
+          <span *ngIf="userElement.key === 'name' ||
+                        userElement.key === 'id' ||
+                        userElement.key === 'email'"
+                        >{{ userElement.key }} {{ userElement.value }}</span>
         </div>
       </td>
         <td>
           <button mat-button style="border-radius: 5px; background-color: rgb(100, 200, 240);
                   margin-right: 2rem;" (click)=" openOrderDialog(order)">
-            Ver Carrito
+            Ver Orden
           </button>
         </td>
         <td>{{ order.status }}</td>
