@@ -13,14 +13,16 @@ import { OrderService } from '../../services/order.service';
 })
 export class OrdersPanelComponent implements OnInit {
 
+
   loading: boolean = false;
   ordersList: Order[] = [];
-  /*
+ /* 
   ordersList: Order[] = [
-    { id: 1, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent', user: { name: "juan", id: 33 }, userId: 1, productId: 7 },
-    { id: 56, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent', user: { name: "juan", id: 32 }, userId: 5, productId: 7 },
-    { id: 32, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent', user: { name: "juan", id: 73 }, userId: 1, productId: 7 },
-    { id: 98, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent', user: { name: "juan", id: 99 }, userId: 8, productId: 7 },
+    { id: 1, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent', user: { name: "juan", id: 33, email: "juan@gmail.com", password: 12345, role: "comprador" }, userId: 1, productId: 7 },
+    { id: 1, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent', user: { name: "juan", id: 33, email: "juan@gmail.com", password: 12345, role: "comprador" }, userId: 1, productId: 7 },
+    { id: 1, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent', user: { name: "juan", id: 33, email: "juan@gmail.com", password: 12345, role: "comprador" }, userId: 1, productId: 7 },
+    { id: 1, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent', user: { name: "juan", id: 33, email: "juan@gmail.com", password: 12345, role: "comprador" }, userId: 1, productId: 7 },
+    { id: 1, products: [{ id: 1, name: "silla", prize: 3},], status: 'sent', user: { name: "juan", id: 33, email: "juan@gmail.com", password: 12345, role: "comprador" }, userId: 1, productId: 7 },
   ];
   */
 
