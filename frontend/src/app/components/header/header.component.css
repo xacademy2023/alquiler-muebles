@@ -42,7 +42,8 @@ li a {
   padding-left: 1rem;
 }
 
-.login-btn {
+.login-btn,
+.btn-dashboard {
   color: #fff;
   background-color: #5e165ef6;
   font-size: 16px;
@@ -67,4 +68,8 @@ li a {
   text-transform: capitalize;
   font-size: 1.2rem;
   margin: 0;
+}
+
+.clipboard-icon {
+  margin: 0 0.5rem;
 }

@@ -77,7 +77,12 @@
       <p class="text-description-2"><b>Categoría:</b> {{ category }}</p>
       <p class="cant-selection-1"><b>Stock:</b> {{ stock }}</p>
       <p class="content-price"><b>Precio:</b> ${{ price }}</p>
-      <button class="btn-add" type="submit" (click)="addProduct()">
+      <button
+        *ngIf="showBtn"
+        class="btn-add"
+        type="submit"
+        (click)="addProduct()"
+      >
         Agregar al pedido
       </button>
     </div>

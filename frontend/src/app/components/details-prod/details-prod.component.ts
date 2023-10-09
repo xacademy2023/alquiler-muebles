@@ -25,6 +25,7 @@ export class DetailsProdComponent implements OnInit {
   images2: string;
   images3: string;
   stock: number;
+  showBtn: boolean;
 
   constructor(
     private _productService: ProductService,
@@ -45,6 +46,7 @@ export class DetailsProdComponent implements OnInit {
     this.images2 = '';
     this.images3 = '';
     this.stock = 0;
+    this.showBtn = false;
   }
 
   ngOnInit(): void {
@@ -57,6 +59,11 @@ export class DetailsProdComponent implements OnInit {
         this.handleError('El id no es válido');
       }
     });
+    const { role } = getUserData();
+
+    if (role === 'comprador') {
+      this.showBtn = true;
+    }
   }
 
   getProduct(id: number) {
