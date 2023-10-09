@@ -1,74 +1,3 @@
-<!-- <header>
-  <div class="header-principal">
-    <div class="iconos">
-      <div class="soporte-cliente">
-        <i id="icono-soporte" class="fa-solid fa-headset"></i>
-        <div class="content-soporte">
-          <span class="text">Soporte al cliente</span>
-          <span class="number">123-456-790</span>
-        </div>
-      </div>
-      <div class="container-logo">
-        <img class="img-logo" src="assets/img/Logotipo Mueblería.png" />
-      </div>
-      <div class="container-user">
-        <i id="usuario" class="fa-solid fa-user"></i>
-        <button *ngIf="!isLogged" class="inicio-sesion" (click)="login()">
-          Iniciar sesión
-        </button>
-        <button *ngIf="isLogged" class="inicio-sesion" (click)="logout()">
-          Cerrar sesión
-        </button>
-      </div>
-      <div class="container-icon">
-        <div class="container-cart-icon">
-          <i id="cesta" class="fa-solid fa-basket-shopping"></i>
-        </div>
-
-        <div class="count-products">
-          <span id="contador-productos">0</span>
-        </div>
-
-        <div class="container-cart-products hidden-cart">
-          <div class="row-product">
-            <div class="cart-product">
-              <div class="info-cart-product">
-                <span class="cantidad-producto-carrito">1</span>
-                <p class="titulo-producto-carrito">Miel</p>
-                <span class="precio-producto-carrito">$680</span>
-              </div>
-              <div class="close">
-                <i class="fa-solid fa-xmark"></i>
-              </div>
-            </div>
-            <div class="cart-total">
-              <h3>Total:</h3>
-              <span class="total-pagar">$680</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container-navbar">
-    <nav class="navbar-container">
-      <i id="icono-desplegable" class="fa-solid fa-bars"></i>
-      <ul class="menu">
-        <li><a href="">Inicio</a></li>
-        <li><a href="listado.html">Productos</a></li>
-        <li><a href="">Ofertas</a></li>
-        <li><a href="">Contacto</a></li>
-      </ul>
-    </nav>
-    <form class="search-form">
-      <input type="search" placeholder="Buscar..." />
-      <button class="btn-search">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
-    </form>
-  </div>
-</header> -->
-
 <header>
   <nav>
     <div class="container-logo">
@@ -88,11 +17,15 @@
     <button *ngIf="isLogged" class="login-btn" (click)="logout()">
       Cerrar sesión
     </button>
-
-    <i
-      *ngIf="isLogged"
-      class="fa-solid fa-basket-shopping cart-icon"
-      routerLink="/cart"
-    ></i>
+    <div *ngIf="isLogged">
+      <button *ngIf="showDashboardBtn" class="btn-dashboard" routerLink="/cart">
+        <i class="fa-solid fa-clipboard-list clipboard-icon"></i>Mi Panel
+      </button>
+      <i
+        *ngIf="!showDashboardBtn"
+        class="fa-solid fa-basket-shopping cart-icon"
+        routerLink="/cart"
+      ></i>
+    </div>
   </div>
 </header>
